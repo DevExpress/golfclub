@@ -1,0 +1,19 @@
+﻿<dx-scheduler class="scheduler"
+    [groups]="groups"
+    [currentDate] ="currentDate"
+    [(dataSource)]="schedulerData"
+    [resources]="schedulerResources"
+    [editing]="false"
+    [startDayHour]="6"
+    [endDayHour]="24"
+    (onAppointmentAdded)="changed()"
+    (onAppointmentDblClick)="openBook($event)"
+    [showAllDayPanel]="false"
+    [views]="adaptOptions.views"
+    [currentView]="adaptOptions.currentView">
+    <div class="tooltip-template" *dxTemplate="let appointment of 'appointmentTooltipTemplate'">
+        <div class="caption">Course Booked</div>
+        <span>{{appointment.startDate | date : 'h:mm a'}} -</span>
+        <span>{{appointment.endDate | date : 'h:mm a'}}</span>
+    </div>
+</dx-scheduler>

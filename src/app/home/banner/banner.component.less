@@ -1,0 +1,136 @@
+@accent-color-hover-state: #5ea400;
+@accent-color: #81bd00;
+
+
+.banner-container {
+    width: 550px;
+    margin-top: 41px;
+    text-align: left;
+
+    .top-side {
+        height: 195px;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .offer-name {
+        font-size: 42px;
+        font-weight: bolder;
+        color: white;
+        width: 495px;
+        padding-top: 5px;
+        margin: auto;
+    }
+
+    .offer {
+        font-size: 24px;
+        font-weight: lighter;
+        color: @accent-color;
+        margin-left: 25px;
+        padding-top: 8px;
+    }
+
+    .description {
+        display: inline-block;
+
+        .text {
+            font-size: 30px;
+            width: 260px;
+            margin-left: 30px;
+            padding-top: 14px;
+            line-height: 36px;
+        }
+    }
+
+    .bottom-side {
+        height: 147px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .more-info {
+        position: relative;
+        bottom: 8px;
+        left: 2px;
+        height: 100px;
+        width: 225px;
+
+        &.dx-button {
+            font-size: 38px;
+            font-weight: lighter;
+        }
+    }
+
+    .raiting {
+        width: 149px;
+        margin-left: 31px;
+
+        .value {
+            height: 25px;
+            background-image: url(content/rating.png);
+        }
+    }
+}
+
+/deep/.dx-responsivebox-screen-xs {
+    .banner {
+        background: url(content/home/club1-home-banner.jpg) no-repeat center top;
+        background-size: cover;
+        height: auto;
+
+        banner {
+            .banner-container {
+                text-align: center;
+                margin: 0 auto;
+                padding: 20px 0;
+                width: 88%;
+
+                .bottom-side {
+                    .description {
+                        display: block;
+
+                        .text {
+                            width: auto;
+                            margin-left: 0;
+                        }
+                    }
+                }
+
+                .offer {
+                    margin-left: 0;
+                }
+
+                .offer-name {
+                    width: auto;
+                    padding-bottom: 15px;
+                    margin-left: 0;
+                }
+
+                .raiting {
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .more-info {
+                    left: 0;
+                    top: 30px;
+                    margin-bottom: 50px;
+                    width: 85%;
+                    height: 50px;
+                }
+
+                .more-info.dx-button {
+                    .dx-button-text {
+                        font-size: 18px;
+                    }
+                }
+
+                .top-side {
+                    height: auto;
+                }
+
+                .bottom-side {
+                    height: auto;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,261 @@
+@accent-color-hover-state: #5ea400;
+@accent-color: #81bd00;
+
+header {
+    height: 110px;
+
+    &.content {
+        position: relative;
+        z-index: 3;
+    }
+}
+
+.logo-container {
+    width: 415px;
+    height: 100%;
+    background: #1d1d1d;
+    float: left;
+}
+
+.logo {
+    width: 204px;
+    height: 56px;
+    cursor: pointer;
+    background-image: url(content/header/logo.png);
+    float: left;
+    margin-top: 27px;
+    margin-left: 74px;
+}
+
+.text-header {
+    width: 609px;
+    height: 100%;
+    background-color: #1d1d1d;
+    float: right;
+}
+
+.powered-by {
+    color: #8c8d8c;
+    margin-top: 38px;
+    margin-left: 28px;
+    font-size: 13px;
+    float: left;
+}
+
+.tabletWidth {
+    min-width: 1024px;
+}
+
+.authorization {
+    float: right;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.log-in {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    outline: none;
+    background-image: url(content/header/login.png);
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:focus {
+        opacity: 0.9;
+    }
+}
+
+.padding-password {
+    margin-top: 8px;
+}
+
+#login-form {
+    margin-top: 15px;
+
+    .dx-box-item {
+        padding-left: 10px;
+    }
+}
+
+.user-authorized {
+    width: 70px;
+    height: 70px;
+    background: url(content/header/user_authorized.png) no-repeat;
+}
+
+.log-out-container {
+    text-align: center;
+
+    .name {
+        color: #000;
+        font-size: 23px;
+        margin-top: 67px;
+        font-weight: 500;
+        white-space: nowrap;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+.buttons-on-popup {
+    .dx-button.button-popup {
+        width: 117px;
+        margin-right: 0;
+        margin-left: 6px;
+        height: 36px;
+    }
+
+    width: 352px;
+    margin: auto;
+    padding-top: 41px;
+    text-align: center;
+}
+
+.login-popup {
+    .dx-popup-content {
+        .dx-template-wrapper {
+            height: 213px;
+        }
+
+        .dx-template-wrapper.log-out-container {
+            height: 161px;
+        }
+    }
+}
+
+.buttons-on-popup.authorized {
+    padding-top: 81px;
+}
+
+.dx-responsivebox-screen-lg {
+    header {
+        .login-item {
+            width: 354px;
+        }
+    }
+}
+
+/deep/.dx-responsivebox-screen-xs {
+    header {
+        .logo-container {
+            width: 73%;
+            background: #1d1d1d;
+
+            .logo {
+                margin-left: 20px;
+            }
+        }
+
+        .text-header {
+            width: 27%;
+            background: #1d1d1d;
+        }
+
+        .log-in {
+            width: 47px;
+            height: 47px;
+            background: url(content/header/login_mobile.png);
+        }
+
+        .user-authorized {
+            width: 47px;
+            height: 47px;
+            background: url(content/header/user_authorized_mobile.png) no-repeat;
+        }
+
+        .login-item {
+            width: 100%;
+
+            .dx-texteditor {
+                margin-top: 3px;
+            }
+        }
+
+        .dx-layout-manager {
+            .dx-field-item {
+                &:not(.dx-first-col) {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .padding-password {
+            margin-top: 0;
+        }
+
+        .authorization {
+            margin: 30px 20px 0 0;
+        }
+
+        .powered-by {
+            width: 0;
+            visibility: hidden;
+            margin-left: 0;
+        }
+    }
+
+    #login-form {
+        margin-top: 0;
+
+        .dx-box-item {
+            padding-left: 0;
+        }
+    }
+}
+
+.login-popup {
+    /deep/.dx-popup-content {
+        .dx-template-wrapper.dx-responsivebox-screen-xs {
+            height: 238px;
+        }
+
+        .dx-template-wrapper.dx-responsivebox-screen-xs.log-out-container {
+            height: 171px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /deep/.dx-overlay-wrapper {
+        &.popup {
+            .dx-toolbar-label {
+                > div {
+                    font-size: 16px;
+                }
+            }
+
+            .dx-popup-title.dx-toolbar {
+                .dx-toolbar-item {
+                    padding-right: 0;
+                }
+            }
+
+            .dx-responsivebox-screen-xs {
+                .buttons-on-popup {
+                    &.authorized {
+                        padding-top: 50px;
+                    }
+
+                    width: 100%;
+                    padding-top: 25px;
+                    padding-right: 0;
+
+                    .dx-button.button-popup {
+                        width: 100%;
+                        height: 40px;
+                        margin: 0;
+
+                        &:first-child {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

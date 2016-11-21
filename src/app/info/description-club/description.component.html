@@ -1,0 +1,34 @@
+﻿<div class="full-description info">
+    <div *ngIf="descriptionVisible">
+        <div  class="img">
+            <div [ngStyle]="{'background-image':'url(' + club[0].Image + ')'}"></div>
+        </div>
+        <div class="description">
+            <div class="details">
+                <div class="label">Hole regulation length course:</div>
+                <div class="value">{{club[0].HoleCount}}</div>
+            </div>
+            <div class="details">
+                <div class="label">Golf course(s):</div>
+                <div class="value">{{club[0].GolfCourseCount}}</div>
+            </div>
+            <div class="details">
+                <div class="label">Cost per player:</div>
+                <div class="value">{{club[0].Price | currency:'USD':true:'1.0'}}</div>
+            </div>
+            <div class="details">
+                <div class="label">Rating:</div>
+                <div class="value">
+                    <div class="rating" [ngStyle]="{ 'width' : '20 *' + club[0].Rating + '%'}">
+                    </div>
+                </div>
+            </div>
+            <dx-button *ngIf="club" class="button white-text"
+                [height]="41"
+                (onClick)="popupBook(club[0])"
+                [text]="'Book ' + club[0].Name"></dx-button>
+        </div>
+     </div>
+    <book [data]="bookData" [bookVisible]="popupVisible" [adaptOptions]="adaptOptions"></book>
+    <schedule [searchingParams]="searchingParams" [adaptOptions]="adaptOptions" (editBook)="popupBook($event)"></schedule>
+</div>

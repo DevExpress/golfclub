@@ -1,0 +1,84 @@
+﻿<dx-popup class="book-popup popup"
+    [closeOnOutsideClick]="false"
+    contentTemplate="bookTemplate"
+    [fullScreen]="false"
+    [shading]="true"
+    (onShowing)="initBook()"
+    width="100%"
+    [maxWidth]="480"
+    (onHidden)="bookHidden()"
+    [height]="adaptOptions.heightBookPopup"
+    [dragEnabled]="false"
+    [showTitle]="adaptOptions.showTitle"
+    [(visible)]="bookVisible"
+    >
+    <div class="template-book" [ngClass]="{'dx-responsivebox-screen-xs': !adaptOptions.largeScreen}" *dxTemplate="let book of 'bookTemplate'">
+        <div class="title">Book a Tee Time in</div>
+        <div class="name-club">{{data.Name}}</div>
+        <dx-form *ngIf="bookData.players" id="book-form"
+            [(formData)]="bookData"
+            labelLocation="left"
+            [showRequiredMark]="false"
+            (onFieldDataChanged)="dateChanged($event)"
+            [screenByWidth]="getScreen"
+            [items]="[{
+                dataField: 'startDate',
+                editorType: 'dxDateBox',
+                cssClass: 'booking-date',
+                editorOptions: {
+                    type: 'datetime',
+                    adaptivityEnabled: true,
+                    pickerType: adaptOptions.pickerType,
+                    height: 36,
+                    width: '100%',
+                    min: minStartDate
+                }, 
+                validationRules: [{
+                    type: 'custom',
+                    reevaluate: true,
+                    validationCallback: timeValidation
+                }]
+            }, {
+                dataField: 'endDate',
+                editorType: 'dxDateBox',
+                cssClass: 'booking-date',
+                editorOptions: {
+                    type: 'datetime',
+                    height: 36,
+                    width: '100%',
+                    readOnly: true
+                }
+            }, {
+                dataField: 'players',
+                editorType: 'dxNumberBox',
+                cssClass: 'booking-details',
+                editorOptions: {
+                    height: 36,
+                    min: 2,
+                    max: 4
+                }
+            }, {
+                dataField: 'notes',
+                editorType: 'dxTextArea',
+                cssClass: 'booking-details',
+                editorOptions: {
+                    height: 55
+                }
+            }, {
+                template: 'buttonsTemplate'
+            }]">
+            <div *dxTemplate ="let t of 'buttonsTemplate'">
+                <div class="buttons-on-popup">
+                    <dx-button class="button-popup white-text green-button"
+                        (onClick)="booking()"
+                        text="Book">
+                    </dx-button>
+                    <dx-button class="button-popup cancel"
+                        (onClick)="bookVisible = !bookVisible"
+                        text="Cancel">
+                    </dx-button>
+                </div>
+            </div>
+        </dx-form>
+    </div>
+</dx-popup>

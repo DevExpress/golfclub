@@ -1,0 +1,21 @@
+﻿<div class="banner-container text-space">
+    <div class="top-side">
+        <div class="offer">Offer of the day</div>
+        <div class="offer-name">{{name}} Tee Times</div>
+    </div>
+    <div class="bottom-side">
+        <div *ngIf="offer" class="description">
+            <div class="text">
+                {{offer.Price | currency:'USD':true}} per player<br />
+                {{offer.HoleCount}} holes
+            </div>
+            <div class="raiting">
+                <div class="value" ng-style="{ 'width' : 20 * offer.Rating + '%'}"></div>
+            </div>
+        </div>
+        <dx-button class="more-info white-text green-button" *ngIf="offer"
+            (onClick)="goToInfo(offer)"
+            text="More info">
+        </dx-button>
+    </div>
+</div>

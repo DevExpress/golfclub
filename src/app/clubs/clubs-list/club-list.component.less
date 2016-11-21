@@ -1,0 +1,148 @@
+@accent-color: #81bd00;
+
+.clubs {
+    text-align: right;
+    padding: 30px 10px 0 0;
+}
+
+
+.club {
+    padding: 0;
+    margin-right: 21px;
+    background: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+
+    .image {
+        width: 276px;
+        margin: auto;
+        height: 120px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .info {
+        text-align: center;
+        margin-left: 0;
+        margin-top: 0;
+
+        .name {
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .description {
+            font-size: 13px;
+            color: #81bd00;
+        }
+
+        .address {
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            color: darkgray;
+        }
+
+        .button {
+            width: 276px;
+        }
+    }
+
+    &:nth-child(1) {
+        .button {
+            background-color: #bacb35;
+        }
+
+        .button.dx-state-hover {
+            background-color: #94a22a;
+        }
+
+        .button.dx-state-focused {
+            background-color: #94a22a;
+        }
+    }
+
+    &:nth-child(2) {
+        .button {
+            background-color: #4aca94;
+        }
+
+        .button.dx-state-hover {
+            background-color: #3ba176;
+        }
+
+        .button.dx-state-focused {
+            background-color: #3ba176;
+        }
+    }
+
+    &:nth-child(3) {
+        .button {
+            background-color: #49baca;
+        }
+
+        .button.dx-state-hover {
+            background-color: #3a94a1;
+        }
+
+        .button.dx-state-focused {
+            background-color: #3a94a1;
+        }
+    }
+}
+
+/deep/.dx-responsivebox-screen-xs {
+
+    .result-search {
+        club-list {
+            .clubs {
+                padding: 22px 0 0 0;
+
+                .club {
+                    padding: 0;
+                    margin-right: 0;
+                    display: block;
+
+                    .image {
+                        width: 87.5%;
+                    }
+
+                    .info {
+                        display: inline-block;
+                        padding-bottom: 30px;
+
+                        .name {
+                            margin-top: 0;
+                            font-weight: 500;
+                            font-size: 17px;
+                        }
+
+                        .address {
+                            margin-bottom: 12px;
+                        }
+
+
+                        .button {
+                            width: 240px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .info-search {
+        .info {
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 20px;
+
+            .name {
+                font-size: 25px;
+            }
+        }
+    }
+}

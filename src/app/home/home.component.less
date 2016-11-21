@@ -1,0 +1,162 @@
+@accent-color: #81bd00;
+
+.responsive-home {
+    .site-content {
+        margin-top: 2px;
+    }
+
+    .left-side {
+        width: 499px;
+        padding-top: 29px;
+        float: left;
+        padding-right: 61px;
+
+        .title {
+            font-size: 24px;
+            color: darkgray;
+        }
+
+        p {
+            font-size: 13px;
+            margin-top: 4px;
+            margin-bottom: 19px;
+        }
+    }
+
+    .right-side {
+        width: 499px;
+        padding-top: 61px;
+        padding-left: 9px;
+        float: right;
+        text-align: left;
+
+        p {
+            font-size: 13px;
+            margin-top: 4px;
+            margin-bottom: 19px;
+            margin-bottom: 12px;
+        }
+    }
+
+    /deep/& > .dx-visibility-change-handler {
+        position: relative;
+        z-index: 3;
+        margin-top: -447px;
+    }
+
+    a {
+        font-size: 14px;
+        color: @accent-color;
+    }
+}
+
+.text-space {
+    white-space: normal;
+    text-align: left;
+}
+
+.search-form {
+    display: block;
+    margin: 0 auto;
+    margin-top: 28px;
+    width: 354px;
+
+    /deep/.dx-layout-manager {
+        .dx-field-item {
+            &:not(.dx-first-row) {
+                padding-top: 18px;
+            }
+        }
+    }
+}
+
+/deep/ .groupItems {
+    width: 170px;
+}
+
+.label {
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.background-header {
+    background: url(content/home/club1-home-banner.jpg) no-repeat center top;
+    height: 557px;
+    background-size: cover;
+
+    .text-header {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.widgets {
+    .left-side {
+        width: 100px;
+        padding-top: 0;
+    }
+
+    .right-side {
+        width: 100px;
+        margin-right: 290px;
+        padding-top: 0;
+        margin-left: 0;
+    }
+}
+
+/deep/.dx-responsivebox-screen-lg {
+    &.responsive-home {
+        > div {
+            > .dx-box-item {
+                &:first-child {
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                &:nth-child(3) {
+                    text-align: center;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
+/deep/.dx-responsivebox-screen-xs {
+    .dx-item-content {
+        .info-devextreme {
+            .left-side {
+                margin: 0 auto;
+                text-align: center;
+                width: 85%;
+                float: none;
+                padding-right: 0;
+            }
+
+            .right-side {
+                margin: 0 auto;
+                text-align: center;
+                padding-top: 37px;
+                float: none;
+                padding-bottom: 15px;
+                width: 65%;
+            }
+
+            .widgets {
+                .right-side {
+                    float: none;
+                    padding-top: 0;
+                    padding-left: 0;
+                    width: 100px;
+                    margin: 0 auto;
+                }
+
+                .left-side {
+                    float: none;
+                    padding-top: 0;
+                    width: 100px;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}

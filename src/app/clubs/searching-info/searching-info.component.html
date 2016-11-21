@@ -1,0 +1,5 @@
+﻿<div class="info" *ngIf="infoVisible">
+    <div class="address name">{{dataInfo.City.Name}}, {{dataInfo.City.StateProvince}}, {{dataInfo.City.Country}}</div>
+    <div class="details">{{startDate | date: 'EEE dd'}} - {{endDate | date: 'EE dd, MMMM yyyy'}}</div>
+    <div class="details">{{searchingParams.players}} players, {{searchingParams.holes}} holes</div>
+</div>

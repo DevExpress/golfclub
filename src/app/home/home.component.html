@@ -1,0 +1,55 @@
+﻿<div class="background-header">
+</div>
+<dx-responsive-box class="responsive-home"
+    [items]="responsiveHomeItems"
+    (onOptionChanged)="adaptation()"
+    [(screenByWidth)]="getScreen"
+    singleColumnScreen="xs">
+
+    <dxi-row [baseSize]="414" screen="lg sm md"></dxi-row>
+    <dxi-row [baseSize]="384" screen="lg sm md"></dxi-row>
+    <dxi-row [baseSize]="175" screen="lg sm md"></dxi-row>
+    <dxi-row [ratio]="1"></dxi-row>
+    <dxi-row [ratio]="1"></dxi-row>
+
+    <dxi-col [baseSize]="475" [ratio]="0"></dxi-col>
+    <dxi-col [baseSize]="550" [ratio]="0"></dxi-col>
+
+    <div *dxTemplate="let item = data of 'search'">
+        <div class="search-container">
+            <search-panel [data]="panel" [adaptOptions]="adaptOptions">
+            </search-panel>
+        </div>
+    </div>
+    <div class="banner" *dxTemplate="let item = data of 'banner'">
+        <banner (dataLoaded)="repaint($event)"></banner>
+    </div>
+    <div *dxTemplate="let item = data of 'clubsList'">
+        <clubs-list></clubs-list>
+    </div>
+    <div class="info-devextreme" *dxTemplate="let item = data of 'leftSideInfo'">
+        <div class="left-side text-space">
+            <div class="title">Getting Started Today</div>
+            <p>
+                DevExtreme Subscription includes Optimized HTML5 JavaScript SPA
+                Framework and 30+ High Performance HTML5 JavaScript Widgets.
+            </p>
+            <a target="_blank" href="http://js.devexpress.com/">Download your free 30-day trial</a>
+        </div>
+    </div>
+    <div class="info-devextreme" *dxTemplate="let item = data of 'rightSideInfo'">
+        <div class="right-side text-space">
+            <p>The following DevExtreme Widgets were used on this page:</p>
+            <div class="widgets">
+                <div class="left-side text-space">
+                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/forms_and_multi-purpose-scheduler-overview">dxScheduler</a>
+                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/dialogs_and_notifications-popup-overview">dxPopup</a>
+                </div>
+                <div class="right-side text-space">
+                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/forms_and_multi-purpose-form-overview">dxForm</a>
+                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/forms_and_multi-purpose-responsive_box-overview">dxResponsiveBox</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</dx-responsive-box>

@@ -1,0 +1,46 @@
+@accent-color: #81bd00;
+
+.dx-scheduler {
+    padding: 30px 30px 30px 30px;
+
+    /deep/.dx-scheduler-navigator {
+        .dx-button {
+            .dx-icon {
+                color: @accent-color;
+            }
+
+            .dx-button-text {
+                color: @accent-color;
+            }
+        }
+    }
+}
+
+.tooltip-template {
+    height: 35px;
+
+    > div {
+        color: white;
+    }
+
+    span {
+        color: white;
+    }
+
+    .caption {
+        font-weight: 700;
+        font-size: 14px;
+    }
+}
+
+/deep/.dx-tooltip-wrapper {
+    .dx-overlay-content {
+        border: none;
+        box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        background-color: #81bd00;
+
+        .dx-popup-content {
+            background: #81bd00;
+        }
+    }
+}

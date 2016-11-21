@@ -1,0 +1,88 @@
+<header class="content">
+    <div class="logo-container">
+        <div class="logo" (click)="redirect()"></div>
+    </div>
+    <div class="text-header">
+        <div class="powered-by">
+            POWERED BY <br>
+            DEVEXTREME WIDGETS AND ANGULARJS FRAMEWORK
+        </div>
+        <div class="authorization log-in" 
+            tabindex="0" 
+            [ngClass]="{'log-in': !userName, 'user-authorized': userName }" 
+            (click)="loginVisible = !loginVisible" 
+            (keypress)="loginVisible = !loginVisible">
+        </div>
+    </div>
+    <dx-popup class="popup login-popup"
+        [fullScreen]="false"
+        [dragEnabled]="false"
+        [showCloseButton]="true"
+        [closeOnOutsideClick]="true"
+        [maxWidth]="415"
+        width="100%"
+        [height]="adaptOptions.heightLoginPopup"
+        [title]="loginTitle"
+        [(visible)]="loginVisible"
+        [contentTemplate]="logTemplate">
+        <div [ngClass]="{'dx-responsivebox-screen-xs': !adaptOptions.largeScreen}" *dxTemplate="let item = data of 'loginTemplate'">
+            <dx-form id="login-form"
+                [formData]="loginData"
+                labelLocation="top"
+                [showRequiredMark]="false"
+                [items]="[{
+                    dataField: 'loginValue',
+                    label: {
+                        text: 'Login'
+                    },
+                    cssClass: 'login-item',
+                    editorOptions: {
+                            height: 35
+                    }, 
+                    validationRules: [{
+                        type: 'required',
+                        message: 'Login is required'
+                    }]
+                }, {
+                    dataField: 'passwordValue',
+                    cssClass: 'padding-password login-item',
+                    label: {
+                        text: 'Password'
+                    },
+                    editorOptions: {
+                        height: 35,
+                        mode: 'password'
+                    }, 
+                    validationRules: [{
+                        type: 'required',
+                        message: 'Password is required'
+                    }]
+                }]">
+            </dx-form>
+            <div class="buttons-on-popup">
+                <dx-button class="button-popup white-text green-button"
+                    text="Login"
+                    (onClick)="showWelcome()">
+                </dx-button>
+                <dx-button class="button-popup cancel"
+                    text="Cancel"
+                    (onClick)="loginVisible = !loginVisible">
+                </dx-button>
+            </div>
+        </div>
+        <div class="log-out-container" [ngClass]="{'dx-responsivebox-screen-xs': !adaptOptions.largeScreen}" *dxTemplate="let item = data of 'logoutTemplate'">
+            <div class="name" title="{{userName}}">{{userName}}</div>
+            <div class="buttons-on-popup authorized">
+                <dx-button class="button-popup white-text"
+                    text="Logout"
+                    type="danger"
+                    (onClick)="logOut()">
+                </dx-button>
+                <dx-button class="button-popup cancel"
+                    text="Cancel"
+                    (onClick)="loginVisible = !loginVisible">
+                </dx-button>
+            </div>
+        </div>
+    </dx-popup>
+</header>

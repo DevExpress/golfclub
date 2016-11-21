@@ -1,0 +1,21 @@
+﻿<div class="info-clubs">
+    <div class="content">
+        <div class="best-title">Best Golf Clubs</div>
+        <div class="best-clubs" id="clubs">
+            <div class="club" tabindex="0" *ngFor="let club of clubs" (click)="goToInfo(club)" (keypress)="keyPress($event, club)">
+                <div class="image" [ngStyle]="{'background-image':'url('+ club.Image +')'}"></div>
+                <div class="name">{{club.Name}}</div>
+                <div class="description">{{club.HoleCount}} holes, {{club.Price | currency:'USD':true:'1.0'}} per player</div>
+                <div class="address">{{club.City.Name}}, {{club.City.StateProvince}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<dx-load-panel
+    message="Loading..."
+    [shading]="true"
+    [showPane]="false"
+    shadingColor="#fff"
+    [position]="{ of: '#clubs'}"
+    [visible]="loadingData">
+</dx-load-panel>

@@ -1,0 +1,108 @@
+/deep/.change-search {
+    width: 100%;
+
+    .dx-overlay-content {
+        max-height: 350px;
+        max-width: 415px;
+        min-height: 350px;
+        min-width: 415px;
+    }
+
+    .dx-invalid-message {
+        > .dx-overlay-content {
+            min-height: 0;
+            min-width: 0;
+        }
+    }
+
+    search-panel {
+        &.search-container {
+            .search-panel {
+                width: 100%;
+                height: 100%;
+                margin: 2px 0 0 0;
+
+                > .title {
+                    visibility: hidden;
+                    height: 0;
+                    padding-top: 0;
+                }
+
+                .location {
+                    margin-left: 10px;
+                    margin-top: 0;
+                }
+
+                .left-side {
+                    margin-left: 10px;
+                }
+
+                .right-side {
+                    .dx-fieldset {
+                        margin-right: 0;
+                    }
+                }
+
+                .search {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .search-form {
+            margin-top: 0;
+        }
+    }
+
+    .dx-responsivebox-screen-xs {
+        .search-container {
+            .search-panel {
+                margin: 0;
+
+                > .title {
+                    visibility: visible;
+                    font-size: 20px;
+                    height: auto;
+                    font-weight: 300;
+                    margin-left: 0;
+                    padding: 20px 0 0 0;
+                }
+
+                .search-form {
+                    text-align: center;
+                    margin-top: 22px;
+                    width: 88%;
+
+                    .dx-layout-manager {
+                        .dx-field-item:not(.dx-first-row) {
+                            padding-top: 7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.change-search-btn {
+    margin-top: 5px;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    /deep/.dx-overlay-wrapper.change-search {
+        height: 100%;
+
+        .dx-popup-content {
+            padding: 0;
+        }
+
+        .dx-overlay-content {
+            max-width: 100%;
+            max-height: 385px;
+            min-height: 385px;
+            min-width: 100%;
+        }
+    }
+}

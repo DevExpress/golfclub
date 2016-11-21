@@ -1,0 +1,17 @@
+# Golf Club
+A sample Angular 2 application for booking golf course tee times. The app uses the DevExtreme UI Widgets such as: dxScheduler, dxForm, dxResponsiveBox, dxPopup.
+
+For more information about DevExtreme, please visit [https://js.devexpress.com/](https://js.devexpress.com/).
+
+## Prerequisites
+[Node.js and npm](https://docs.npmjs.com/getting-started/installing-node) are required.
+The app was build using angular-cli. Run `npm install angular-cli -g` to install it.
+
+## Required packages
+Run `npm install` to install the required node packages. 
+
+## Development server
+Run `npm start` or `ng serve` to start a dev server. Navigate to `http://localhost:4200/`. The app will be automatically reloaded if you change any of the source files.
+
+## Build
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.

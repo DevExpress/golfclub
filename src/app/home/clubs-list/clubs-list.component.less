@@ -1,0 +1,123 @@
+@accent-color: #81bd00;
+
+.info-clubs {
+    height: 353px;
+    background-color: white;
+    margin-top: 31px;
+    padding-top: 23px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.best-title {
+    width: 394px;
+    height: 70px;
+    background: url(content/home/title.png) no-repeat right;
+    margin-left: 360px;
+    text-align: left;
+    font-size: 48px;
+    font-weight: lighter;
+    margin-top: 3px;
+}
+
+.best-clubs {
+    margin: 43px auto 0;
+    height: 200px;
+
+    .club {
+        display: inline-block;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+
+        .name {
+            margin-top: 9px;
+            font-size: 14px;
+        }
+
+        .image {
+            width: 182px;
+            height: 120px;
+            background-repeat: no-repeat;
+            margin: auto;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .description {
+            font-size: 13px;
+            color: @accent-color;
+        }
+
+        .address {
+            font-size: 13px;
+            font-weight: bold;
+            color: darkgray;
+        }
+
+        &:hover {
+            background-color: #e6f2cc;
+        }
+
+        &:focus {
+            background-color: #e6f2cc;
+        }
+    }
+}
+
+/deep/.dx-responsivebox-screen-xs {
+    .info-clubs {
+        margin-top: 0;
+        padding-top: 18px;
+        height: 485px;
+        text-align: center;
+
+        .content {
+            .best-title {
+                margin: 0 auto;
+                width: 280px;
+                height: 48px;
+                background: url(content/home/title_mobile.png) no-repeat right;
+                font-size: 36px;
+            }
+
+            .best-clubs {
+                margin-top: 10px;
+
+                .club {
+                    display: block;
+
+                    .image {
+                        width: 87.5%;
+                    }
+
+                    &:nth-child(3) {
+                        height: 0;
+                        visibility: hidden;
+                        display: block;
+                        padding: 0;
+                    }
+
+                    &:nth-child(4) {
+                        height: 0;
+                        visibility: hidden;
+                        display: block;
+                        padding: 0;
+                    }
+
+                    &:nth-child(5) {
+                        height: 0;
+                        visibility: hidden;
+                        display: block;
+                        padding: 0;
+                    }
+
+                    .info {
+                        display: inline-block;
+                        padding-bottom: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+﻿<div *ngIf="clubsData" class="clubs" [ngClass]="{'big-padding': clubsData.length == 2}">
+    <div class="club" *ngFor="let club of clubsData">
+        <div class="image" [ngStyle]="{'background-image':'url(' + club.Image + ')'}" (click)="goToInfo(club)"></div>
+        <div class="info">
+            <div class="name" (click)="goToInfo(club)">{{club.Name}}</div>
+            <div class="description">{{club.HoleCount}} holes, {{club.Price | currency:'USD':true:'1.0'}} per player</div>
+            <div class="address">{{club.City.Name}}, {{club.City.StateProvince}}</div>
+            <dx-button class="button white-text"
+                [height]="41"
+                (onClick)="popupBook(club)"
+                [text]="'Book ' + club.Name">
+            </dx-button>
+        </div>
+    </div>
+</div>
+<book [data]="bookData" [adaptOptions]="adaptOptions" [bookVisible]="popupVisible"></book>
+<schedule [searchingParams]="searchingParams" [adaptOptions]="adaptOptions" (editBook)="popupBook($event)"></schedule>

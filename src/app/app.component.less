@@ -1,0 +1,153 @@
+@accent-color-hover-state: #5ea400;
+@accent-color: #81bd00;
+@font-family: "Helvetica Neue", "Segoe UI", Helvetica, Verdana, sans-serif;
+
+body {
+    margin: 0;
+    margin: 0;
+    font-family: @font-family;
+    width: 100%;
+    background-color: #f6f9f5;
+    font-size: 16px;
+
+    .dx-tooltip-wrapper.dx-popover-wrapper {
+        .dx-popover-arrow {
+            &:after {
+                border: none;
+                background: #81bd00;
+            }
+        }
+    }
+}
+
+.content {
+    width: 1024px;
+    margin: auto;
+}
+
+.popup {
+    &.dx-popup-wrapper {
+        .dx-state-focused {
+            &.dx-overlay-content {
+                border: none;
+            }
+        }
+
+        .dx-overlay-content {
+            border: none;
+        }
+    }
+
+    .dx-field {
+        padding: 0.4em 0 1px 0;
+    }
+
+    .dx-fieldset {
+        margin: 5px 11px 30px 9px;
+    }
+
+    .dx-popup-title.dx-toolbar {
+        border-bottom: none;
+        background: none;
+        padding: 21px 30px 0 30px;
+
+        .dx-closebutton {
+            .dx-icon {
+                color: @accent-color;
+            }
+        }
+    }
+
+    .dx-toolbar.dx-widget.dx-visibility-change-handler.dx-collection.dx-popup-title {
+        font-size: 24px;
+    }
+
+    .dx-popup-title.dx-toolbar {
+        .dx-toolbar-before {
+            width: 100%;
+            text-align: center;
+            padding-right: 0;
+        }
+    }
+}
+
+.dx-button.green-button {
+    background-color: #81bd00;
+    border-style: none;
+}
+
+.white-text.dx-button {
+    .dx-button-text {
+        color: white;
+    }
+}
+
+.dx-field-item-label-text {
+    color: #000;
+}
+
+.dx-button.green-button {
+    &.dx-state-hover {
+        background-color: @accent-color-hover-state;
+    }
+
+    &.dx-state-focused {
+        background-color: @accent-color-hover-state;
+    }
+}
+
+.dx-state-focused.dx-overlay-content {
+    outline: none;
+}
+
+home {
+    display: block;
+    position: relative;
+    z-index: 0;
+    margin-top: -110px;
+}
+
+.dx-calendar-cell {
+    &.dx-calendar-today {
+        text-shadow: none;
+        font-weight: bold;
+        color: @accent-color;
+    }
+
+    &.dx-calendar-contoured-date {
+        -webkit-box-shadow: inset 0 0 0 1px #81bd00;
+        -moz-box-shadow: inset 0 0 0 1px #81bd00;
+        box-shadow: inset 0 0 0 1px #81bd00;
+    }
+}
+
+.dx-responsivebox-screen-xs {
+    .content {
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .dx-field-item-label-content {
+        text-align: left;
+    }
+
+    .dx-field-item-label-location-top {
+        text-align: center;
+    }
+
+    .dx-button-has-text {
+        .dx-button-content {
+            padding: 7px 0 8px;
+        }
+    }
+}
+
+.dx-responsivebox-screen-lg {
+    .page {
+        width: 1024px;
+        margin: 0 auto;
+    }
+}

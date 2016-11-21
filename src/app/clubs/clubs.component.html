@@ -1,0 +1,32 @@
+﻿<div class="page search-page">
+    <dx-responsive-box
+        [items]="responsiveClubsPageItems"
+        [screenByWidth]="getScreen"
+        (onOptionChanged)="adaptation()"
+        singleColumnScreen="xs">
+
+        <dxi-row [baseSize]="109" screen="lg sm md"></dxi-row>
+        <dxi-row [baseSize]="756" screen="lg sm md"></dxi-row>
+        <dxi-row [ratio]="1"></dxi-row>
+
+        <dxi-col [baseSize]="475" [ratio]="0"></dxi-col>
+        <dxi-col [baseSize]="550" [ratio]="0"></dxi-col>
+
+        <div class="info-search" *dxTemplate="let item = data of 'searchingInfo'">
+            <searching-info [searchingParams]="searchingParams" (dataLoaded)="repaint($event)"></searching-info>
+        </div>
+        <div class="info-search" *dxTemplate="let item = data of 'search'">
+            <change-search class="right-side" [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
+        </div>
+        <div class="result-search" *dxTemplate="let item = data of 'searchingResult'">
+            <club-list [adaptOptions]="adaptOptions"></club-list>
+        </div>
+    </dx-responsive-box>
+    <dx-load-panel message="Loading..."
+        [shading]="true"
+        [showPane]="false"
+        shadingColor="#f6f9f5"
+        [position]="{ of: '#page'}"
+        [visible]="loadingData">
+    </dx-load-panel>
+</div>

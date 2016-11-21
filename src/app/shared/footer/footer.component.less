@@ -1,0 +1,47 @@
+.footer {
+    height: 68px;
+    margin: -1px 15px 0 15px;
+    border-top: 1px solid #d4d6d3;
+
+    .logo {
+        width: 157px;
+        height: 27px;
+        background-image: url(content/footer/logo.png);
+        background-repeat: no-repeat;
+        display: inline-block;
+        float: right;
+        margin-top: 21px;
+    }
+}
+
+.copyright {
+    float: left;
+    margin-top: 24px;
+    font-size: 13px;
+}
+
+footer {
+    background-color: #f6f9f5;
+}
+
+/deep/.dx-responsivebox-screen-xs {
+    .content {
+        .footer {
+            text-align: center;
+
+            a {
+                &.logo {
+                    float: none;
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .copyright {
+            float: none;
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+    }
+}

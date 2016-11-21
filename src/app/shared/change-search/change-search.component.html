@@ -1,0 +1,24 @@
+﻿<dx-button class="white-text green-button change-search-btn"
+    text="Change Search"
+    [width]="183"
+    [height]="41"
+    (onClick)="changeSearchVisible = !changeSearchVisible"></dx-button>
+<dx-popup class="change-search"
+    [fullScreen]="false"
+    [showTitle]="false"
+    [shading]="false"
+    width="100%"
+    height="100%"
+    [dragEnabled]="false"
+    [closeOnOutsideClick]="true"
+    contentTemplate="searchTemplate"
+    [(visible)]="changeSearchVisible"
+    [position]="adaptOptions.position">
+    <div [ngClass]="{'dx-responsivebox-screen-xs': !adaptOptions.largeScreen}" *dxTemplate="let item = data of 'searchTemplate'">
+        <search-panel class="search-container" 
+            [data]="params" 
+            [adaptOptions]="adaptOptions" 
+            (onSearched)="hideSearch()">
+        </search-panel>
+    </div>
+</dx-popup>

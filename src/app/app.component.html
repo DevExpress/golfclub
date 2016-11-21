@@ -1,0 +1,20 @@
+<dx-responsive-box
+    height="auto"
+    (onOptionChanged)="adaptation()"
+    [(screenByWidth)]="getScreen"
+    [items]="items">
+
+    <dxi-row [ratio]="1"></dxi-row>
+    <dxi-row [ratio]="1"></dxi-row>
+    <dxi-row [ratio]="1"></dxi-row>
+
+    <div *dxTemplate="let item = data of 'header'">
+        <header-app [adaptOptions]="adaptOptions"></header-app>
+    </div>
+    <div id="page" *dxTemplate="let item = data of 'content'">
+        <router-outlet></router-outlet>
+    </div>
+    <div *dxTemplate="let item = data of 'footer'">
+        <footer-app></footer-app>
+    </div>
+</dx-responsive-box>
