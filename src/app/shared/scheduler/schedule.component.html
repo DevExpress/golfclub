@@ -2,6 +2,7 @@
     [groups]="groups"
     [currentDate] ="currentDate"
     [(dataSource)]="schedulerData"
+    appointmentTooltipTemplate="appointmentTooltip"
     [resources]="schedulerResources"
     [editing]="false"
     [startDayHour]="6"
@@ -11,9 +12,9 @@
     [showAllDayPanel]="false"
     [views]="adaptOptions.views"
     [currentView]="adaptOptions.currentView">
-    <div class="tooltip-template" *dxTemplate="let appointment of 'appointmentTooltipTemplate'">
+    <div class="tooltip-template" *dxTemplate="let appointment of 'appointmentTooltip'">
         <div class="caption">Course Booked</div>
-        <span>{{appointment.startDate | date : 'h:mm a'}} -</span>
-        <span>{{appointment.endDate | date : 'h:mm a'}}</span>
+        <span>{{appointment.startDate | date : 'shortTime'}} -</span>
+        <span>{{appointment.endDate | date : 'shortTime'}}</span>
     </div>
 </dx-scheduler>

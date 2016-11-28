@@ -12,13 +12,13 @@
         <dxi-col [baseSize]="475" [ratio]="0"></dxi-col>
         <dxi-col [baseSize]="550" [ratio]="0"></dxi-col>
 
-        <div class="info-search" *dxTemplate="let item = data of 'searchingInfo'">
+        <div class="info-search" *dxTemplate="let item of 'searchingInfo'">
             <searching-info [searchingParams]="searchingParams" (dataLoaded)="repaint($event)"></searching-info>
         </div>
-        <div class="info-search" *dxTemplate="let item = data of 'search'">
+        <div class="info-search" *dxTemplate="let item of 'search'">
             <change-search class="right-side" [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
         </div>
-        <div class="result-search" *dxTemplate="let item = data of 'searchingResult'">
+        <div class="result-search" *dxTemplate="let item of 'searchingResult'">
             <club-list [adaptOptions]="adaptOptions"></club-list>
         </div>
     </dx-responsive-box>
