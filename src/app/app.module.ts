@@ -1,8 +1,8 @@
 import { NgModule, enableProdMode } from "@angular/core";
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxResponsiveBoxModule } from "devextreme-angular/ui/responsive-box";
-import { DxTemplateModule } from "devextreme-angular/core/dx.template";
+import { DxResponsiveBoxModule,
+         DxTemplateModule } from "devextreme-angular";
 import { AppComponent } from "./app.component";
 
 import { ClubsService } from "./clubs.service";
