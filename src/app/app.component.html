@@ -8,13 +8,13 @@
     <dxi-row [ratio]="1"></dxi-row>
     <dxi-row [ratio]="1"></dxi-row>
 
-    <div *dxTemplate="let item = data of 'header'">
+    <div *dxTemplate="let item of 'header'">
         <header-app [adaptOptions]="adaptOptions"></header-app>
     </div>
-    <div id="page" *dxTemplate="let item = data of 'content'">
+    <div id="page" *dxTemplate="let item of 'content'">
         <router-outlet></router-outlet>
     </div>
-    <div *dxTemplate="let item = data of 'footer'">
+    <div *dxTemplate="let item of 'footer'">
         <footer-app></footer-app>
     </div>
 </dx-responsive-box>

@@ -21,13 +21,13 @@
             </search-panel>
         </div>
     </div>
-    <div class="banner" *dxTemplate="let item = data of 'banner'">
+    <div class="banner" *dxTemplate="let item of 'banner'">
         <banner (dataLoaded)="repaint($event)"></banner>
     </div>
     <div *dxTemplate="let item = data of 'clubsList'">
         <clubs-list></clubs-list>
     </div>
-    <div class="info-devextreme" *dxTemplate="let item = data of 'leftSideInfo'">
+    <div class="info-devextreme" *dxTemplate="let item of 'leftSideInfo'">
         <div class="left-side text-space">
             <div class="title">Getting Started Today</div>
             <p>
@@ -37,7 +37,7 @@
             <a target="_blank" href="http://js.devexpress.com/">Download your free 30-day trial</a>
         </div>
     </div>
-    <div class="info-devextreme" *dxTemplate="let item = data of 'rightSideInfo'">
+    <div class="info-devextreme" *dxTemplate="let item of 'rightSideInfo'">
         <div class="right-side text-space">
             <p>The following DevExtreme Widgets were used on this page:</p>
             <div class="widgets">

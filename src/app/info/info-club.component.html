@@ -13,16 +13,16 @@
         <dxi-col [ratio]="1"></dxi-col>
         <dxi-col [ratio]="1"></dxi-col>
 
-        <div class="info-search" *dxTemplate="let item = data of 'searchingInfo'">
+        <div class="info-search" *dxTemplate="let item of 'searchingInfo'">
             <full-address (dataLoaded)="repaint($event)"></full-address>
         </div>
-        <div class="info-search" *dxTemplate="let item = data of 'search'">
+        <div class="info-search" *dxTemplate="let item of 'search'">
             <div class="right-side">
                 <div class="details">{{searchingParams.startDate | date: 'EEE dd'}} - {{searchingParams.endDate | date: 'EE dd, MMMM yyyy'}}</div>
                 <change-search [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
             </div>
         </div>
-        <div class="result-search" *dxTemplate="let item = data of 'info'">
+        <div class="result-search" *dxTemplate="let item of 'info'">
             <descroption [adaptOptions]="adaptOptions"></descroption>
         </div>
     </dx-responsive-box>
