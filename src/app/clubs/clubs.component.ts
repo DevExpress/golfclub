@@ -4,7 +4,7 @@ import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
 import { AdaptService } from "../adapt.service";
-import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
+import { DxResponsiveBoxComponent } from "devextreme-angular";
 
 
 @Component({

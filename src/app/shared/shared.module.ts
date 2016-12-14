@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { DxPopupModule } from "devextreme-angular/ui/popup";
-import { DxFormModule } from "devextreme-angular/ui/form";
-import { DxTemplateModule } from "devextreme-angular/core/dx.template";
-import { DxButtonModule } from "devextreme-angular/ui/button";
-import { DxSchedulerModule } from "devextreme-angular/ui/scheduler"
-import { DxTextAreaModule } from "devextreme-angular/ui/text-area"
+import { DxPopupModule,
+         DxFormModule, 
+         DxTemplateModule,
+         DxButtonModule,
+         DxSchedulerModule,
+         DxTextAreaModule } from "devextreme-angular";
 import { CommonModule } from "@angular/common";
 
 import { HeaderComponent } from "./header/header.component";

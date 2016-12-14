@@ -1,8 +1,8 @@
 ﻿import { NgModule } from "@angular/core";
-import { DxButtonModule } from "devextreme-angular/ui/button";
-import { DxResponsiveBoxModule } from "devextreme-angular/ui/responsive-box";
-import { DxLoadPanelModule } from "devextreme-angular/ui/load-panel";
-import { DxTemplateModule } from "devextreme-angular/core/dx.template";
+import { DxButtonModule,
+         DxResponsiveBoxModule,
+         DxLoadPanelModule,
+         DxTemplateModule } from "devextreme-angular";
 import { CommonModule } from "@angular/common";
 
 import { SharedModule } from "../shared/shared.module";
