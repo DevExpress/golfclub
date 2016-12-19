@@ -3,18 +3,20 @@
 @font-family: "Helvetica Neue", "Segoe UI", Helvetica, Verdana, sans-serif;
 
 body {
-    margin: 0;
-    margin: 0;
-    font-family: @font-family;
-    width: 100%;
-    background-color: #f6f9f5;
-    font-size: 16px;
+    &.dx-viewport {
+        margin: 0;
+        margin: 0;
+        font-family: @font-family;
+        width: 100%;
+        background-color: #f6f9f5;
+        font-size: 16px;
 
-    .dx-tooltip-wrapper.dx-popover-wrapper {
-        .dx-popover-arrow {
-            &:after {
-                border: none;
-                background: #81bd00;
+        .dx-tooltip-wrapper.dx-popover-wrapper {
+            .dx-popover-arrow {
+                &:after {
+                    border: none;
+                    background: #81bd00;
+                }
             }
         }
     }
