@@ -29,35 +29,29 @@
             <dx-form id="login-form"
                 [formData]="loginData"
                 labelLocation="top"
-                [showRequiredMark]="false"
-                [items]="[{
-                    dataField: 'loginValue',
-                    label: {
-                        text: 'Login'
-                    },
-                    cssClass: 'login-item',
-                    editorOptions: {
-                            height: 35
-                    }, 
-                    validationRules: [{
-                        type: 'required',
-                        message: 'Login is required'
-                    }]
-                }, {
-                    dataField: 'passwordValue',
-                    cssClass: 'padding-password login-item',
-                    label: {
-                        text: 'Password'
-                    },
-                    editorOptions: {
+                [showRequiredMark]="false">
+                <dxi-item
+                    dataField="loginValue"
+                    cssClass="login-item"
+                    [editorOptions]="{ height: 35 }">
+                    <dxo-label text="Login"></dxo-label>
+                    <dxi-validation-rule
+                        type="required"
+                        message="Login is required">
+                    </dxi-validation-rule>
+                </dxi-item>
+                <dxi-item
+                    dataField="passwordValue"
+                    cssClass="padding-password login-item"
+                    [editorOptions]="{
                         height: 35,
-                        mode: 'password'
-                    }, 
-                    validationRules: [{
-                        type: 'required',
-                        message: 'Password is required'
-                    }]
-                }]">
+                        mode: 'password'}">
+                    <dxo-label text="Password"></dxo-label>
+                    <dxi-validation-rule
+                        type="required"
+                        message="Password is required">
+                    </dxi-validation-rule>
+                </dxi-item>
             </dx-form>
             <div class="buttons-on-popup">
                 <dx-button class="button-popup white-text green-button"
