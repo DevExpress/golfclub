@@ -5,102 +5,101 @@
         [showRequiredMark]="false"
         [screenByWidth]="getScreen"
         [labelLocation]="adaptOptions.searchLabelLocation"
-        (onFieldDataChanged)="fieldChanged($event)"
-        [items]="[{
-            dataField: 'location',
-            editorType: 'dxSelectBox',
-            cssClass: 'search-location',
-            editorOptions: {
+        (onFieldDataChanged)="fieldChanged($event)">
+        <dxi-item
+            dataField="location"
+            editorType="dxSelectBox"
+            cssClass="search-location"
+            [editorOptions]="{
                 height: 36,
                 dataSource: citiesList,
                 placeholder: '',
                 displayExpr: 'Name',
                 valueExpr: 'Id'
-            }, 
-            validationRules: [{
-                type: 'required',
-                message: 'Location is required'
-            }]
-        }, {
-            itemType: 'group',
-            colCount: 2,
-            items: [{
-                dataField: 'startDate',
-                cssClass: 'groupItems',
-                label: {
-                    text: 'From'
-                },
-                editorType: 'dxDateBox',
-                editorOptions: {
+            }">
+            <dxi-validation-rule
+                type="required"
+                message="Location is required">
+            </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            itemType="group"
+            [colCount]="2">
+            <dxi-item 
+                dataField="startDate"
+                editorType="dxDateBox"
+                cssClass="groupItems"
+                [editorOptions]="{
                     adaptivityEnabled: true,
                     max: maxStartDate,
                     min: minStartDate,
                     pickerType: adaptOptions.pickerType,
                     width: '100%',
                     height: 36
-                }, 
-                validationRules: [{
-                    type: 'required',
-                    message: 'From is required'
-                }]
-            }, {
-                dataField: 'endDate',
-                cssClass: 'groupItems',
-                label: {
-                    text: 'To'
-                },
-                editorType: 'dxDateBox',
-                editorOptions: {
+                }">
+                <dxo-label text="From"></dxo-label>
+                <dxi-validation-rule
+                    type="required"
+                    message="From is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item 
+                dataField="endDate"
+                editorType="dxDateBox"
+                cssClass="groupItems"
+                [editorOptions]="{
                     adaptivityEnabled: true,
-                    width: '100%',
-                    min: minEndDate,
                     max: maxEndDate,
+                    min: minEndDate,
                     pickerType: adaptOptions.pickerType,
+                    width: '100%',
                     height: 36
-                }, 
-                validationRules: [{
-                    type: 'required',
-                    message: 'To is required'
-                }]
-            }]
-        }, {
-            itemType: 'group',
-            colCount: 2,
-            items: [{
-                dataField: 'players',
-                cssClass: 'groupItems',
-                editorType: 'dxSelectBox',
-                editorOptions: {
+                }">
+                <dxo-label text="To"></dxo-label>
+                <dxi-validation-rule
+                    type="required"
+                    message="To is required">
+                </dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item
+            itemType="group"
+            [colCount]="2">
+            <dxi-item 
+                dataField="players"
+                editorType="dxSelectBox"
+                cssClass="groupItems"
+                [editorOptions]="{
                     height: 36,
                     dataSource: numberOfPlayers,
                     placeholder: ''
-                }, 
-                validationRules: [{
-                    type: 'required',
-                    message: 'Players is required'
-                }]
-            }, {
-                dataField: 'holes',
-                editorType: 'dxSelectBox',
-                cssClass: 'groupItems',
-                editorOptions: {
+                }">
+                <dxi-validation-rule
+                    type="required"
+                    message="Players is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item 
+                dataField="holes"
+                editorType="dxSelectBox"
+                cssClass="groupItems"
+                [editorOptions]="{
                     height: 36,
                     dataSource: numberOfHoles,
                     placeholder: ''
-                }, validationRules: [{
-                    type: 'required',
-                    message: 'Holes is required'
-                }]
-            }]
-        }, {
-            template: 'buttonTemplate'
-        }]">
-        <div *dxTemplate="let item - data of 'buttonTemplate'">
+                }">
+                <dxi-validation-rule
+                    type="required"
+                    message="Holes is required">
+                </dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item>
             <dx-button class="search green-button white-text"
                 [height]="51"
                 (onClick)="searchClubs()"
-                text="Search Course">\
+                text="Search Course">
             </dx-button>
-        </div>
+        </dxi-item>
     </dx-form>
 </div>
