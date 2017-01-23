@@ -17,65 +17,6 @@ export class HomeComponent {
         holes: null,
         players: null
     };
-    responsiveHomeItems: any = [{
-        location: [{
-            row: 0,
-            col: 0,
-            screen: "lg md sm"
-        }, {
-            row: 0,
-            col: 0,
-            colspan: 2,
-            screen: "xs"
-        }],
-        template: "search"
-    }, {
-        location: [{
-            row: 0,
-            col: 1,
-            screen: "lg md sm"
-        }, {
-            row: 1,
-            col: 0,
-            colspan: 2,
-            screen: "xs"
-        }],
-        template: "banner"
-    }, {
-        location: [{
-            row: 1,
-            col: 0,
-            colspan: 4,
-            screen: "lg md sm"
-        }, {
-            row: 2,
-            col: 0,
-            screen: "xs"
-        }],
-        template: "clubsList"
-    }, {
-        location: [{
-            row: 2,
-            col: 0,
-            screen: "lg md sm"
-        }, {
-            row: 3,
-            col: 0,
-            screen: "xs"
-        }],
-        template: "leftSideInfo"
-    }, {
-        location: [{
-            row: 2,
-            col: 1,
-            screen: "lg md sm"
-        }, {
-            row: 4,
-            col: 0,
-            screen: "xs"
-        }],
-        template: "rightSideInfo"
-    }];
     adaptOptions: any;
     constructor(private adapt: AdaptService) {
         this.adapt.adapt$.subscribe(item => {
