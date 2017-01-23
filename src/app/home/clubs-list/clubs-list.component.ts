@@ -1,4 +1,4 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component, AfterViewInit } from "@angular/core";
 import { ClubsService } from "../../clubs.service";
 import { Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
@@ -16,8 +16,8 @@ const COUNT_DAYS = 1;
         DatePipe
     ]
 })
-export class ClubsComponent {
-    loadingData: boolean = true;
+export class ClubsComponent implements AfterViewInit {
+    loadingData: boolean;
     clubs: any[];
     constructor(private clubsService: ClubsService,
         private common: CommonService,
@@ -33,6 +33,9 @@ export class ClubsComponent {
         if(e.code == "Enter") {
             this.goToInfo(club);
         }
+    }
+    ngAfterViewInit() {
+        this.loadingData = true;
     }
     goToInfo(e: any) {
         this.router.navigate(["info", {
