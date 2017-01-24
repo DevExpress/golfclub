@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from "@angular/core";
+﻿import { Component, OnInit, ViewChild, NgZone } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
@@ -63,9 +63,12 @@ export class ClubsComponent implements OnInit {
         private clubsService: ClubsService,
         private commonService: CommonService,
         private router: Router,
-        private adapt: AdaptService) {
+        private adapt: AdaptService,
+        zone: NgZone) {
         this.adapt.adapt$.subscribe(item => {
-            this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
+            zone.run(() => {
+                this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
+            });
         });
     }
     adaptation() {
