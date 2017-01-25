@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, ViewEncapsulation, NgZone } from "@angular/core";
 import { AdaptService } from "./adapt.service";
 
 @Component({
@@ -11,9 +11,11 @@ import { AdaptService } from "./adapt.service";
 
 export class AppComponent {
     adaptOptions: any;
-    constructor(private adapt: AdaptService) {
+    constructor(private adapt: AdaptService, zone: NgZone) {
         this.adapt.adapt$.subscribe(item => {
-            this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
+            zone.run(() => {
+                this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
+            });
         });
     }
     adaptation() {

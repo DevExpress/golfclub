@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild } from "@angular/core";
+﻿import { Component, ViewChild, NgZone } from "@angular/core";
 import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
 import { AdaptService } from "../adapt.service";
 
@@ -18,9 +18,11 @@ export class HomeComponent {
         players: null
     };
     adaptOptions: any;
-    constructor(private adapt: AdaptService) {
+    constructor(private adapt: AdaptService, zone: NgZone) {
         this.adapt.adapt$.subscribe(item => {
-            this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
+            zone.run(() => {
+                this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
+            });
         });
     }
     repaint (e) {
