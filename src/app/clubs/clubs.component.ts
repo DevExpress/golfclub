@@ -20,41 +20,6 @@ import { DxResponsiveBoxComponent } from "devextreme-angular";
 })
 export class ClubsComponent implements OnInit {
     @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
-    responsiveClubsPageItems: any = [{
-        location: [{
-            row: 0,
-            col: 0,
-            screen: "lg md sm"
-        }, {
-            row: 0,
-            col: 0,
-            screen: "xs"
-        }],
-        template: "searchingInfo"
-    }, {
-        location: [{
-            row: 0,
-            col: 1,
-            screen: "lg md sm"
-        }, {
-            row: 1,
-            col: 0,
-            screen: "xs"
-        }],
-        template: "search"
-    }, {
-        location: [{
-            row: 1,
-            col: 0,
-            colspan: 2,
-            screen: "lg md sm"
-        }, {
-            row: 2,
-            col: 0,
-            screen: "xs"
-        }],
-        template: "searchingResult"
-    }];
     searchingParams: any;
     loadingData: boolean = true;
     navigate: any;

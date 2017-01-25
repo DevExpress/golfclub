@@ -1,20 +1,37 @@
 <dx-responsive-box
     height="auto"
     (onOptionChanged)="adaptation()"
-    [(screenByWidth)]="getScreen"
-    [items]="items">
+    [(screenByWidth)]="getScreen">
 
     <dxi-row [ratio]="1"></dxi-row>
     <dxi-row [ratio]="1"></dxi-row>
     <dxi-row [ratio]="1"></dxi-row>
 
-    <div *dxTemplate="let item of 'header'">
+    <dxi-item>
+        <dxi-location
+            [row]="0"
+            [col]="0"
+            [colspan]="1"
+            screen="lg md sm xs">
+        </dxi-location>
         <header-app [adaptOptions]="adaptOptions"></header-app>
-    </div>
-    <div id="page" *dxTemplate="let item of 'content'">
+    </dxi-item>
+    <dxi-item id="page">
+        <dxi-location
+            [row]="1"
+            [col]="0"
+            [colspan]="1"
+            screen="lg md sm xs">
+        </dxi-location>
         <router-outlet></router-outlet>
-    </div>
-    <div *dxTemplate="let item of 'footer'">
+    </dxi-item>
+    <dxi-item>
+        <dxi-location
+            [row]="2"
+            [col]="0"
+            [colspan]="1"
+            screen="lg md sm xs">
+        </dxi-location>
         <footer-app></footer-app>
-    </div>
+    </dxi-item>
 </dx-responsive-box>

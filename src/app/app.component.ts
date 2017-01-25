@@ -10,31 +10,6 @@ import { AdaptService } from "./adapt.service";
 })
 
 export class AppComponent {
-    items: any = [{
-        location: [{
-            row: 0,
-            col: 0,
-            colspan: 1,
-            screen: "lg md sm xs"
-        }],
-        template: "header"
-    }, {
-        location: [{
-            row: 1,
-            col: 0,
-            colspan: 1,
-            screen: "lg md sm xs"
-         }],
-         template: "content"
-    }, {
-        location: [{
-            row: 1,
-            col: 0,
-            colspan: 1,
-            screen: "lg md sm xs"
-        }],
-        template: "footer"
-    }];
     adaptOptions: any;
     constructor(private adapt: AdaptService) {
         this.adapt.adapt$.subscribe(item => {
