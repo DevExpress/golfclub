@@ -21,7 +21,7 @@ import { DxResponsiveBoxComponent } from "devextreme-angular";
 export class ClubsComponent implements OnInit {
     @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
     searchingParams: any;
-    loadingData: boolean = true;
+    loadingData = true;
     navigate: any;
     adaptOptions: any;
     constructor(private route: ActivatedRoute,

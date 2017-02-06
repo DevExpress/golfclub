@@ -12,7 +12,7 @@ export class SearchingInfoComponent implements OnDestroy{
     @Output() dataLoaded = new EventEmitter<boolean>();
     dataInfo: any;
     startDate: Date;
-    infoVisible: boolean = false;
+    infoVisible = false;
     subscription: Subscription;
     endDate: Date;
     constructor(private clubsServise: ClubsService) {

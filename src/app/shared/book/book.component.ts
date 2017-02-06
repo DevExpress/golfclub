@@ -18,13 +18,13 @@ const MIN_START_TIME = 6,
 export class BookComponent {
     @ViewChild(DxFormComponent) form: DxFormComponent;
     @Input() data: any;
-    @Input() bookVisible: boolean = false;
+    @Input() bookVisible = false;
     @Input() adaptOptions: any;
     params: any;
     minStartDate: Date = new Date();
     reservations: any[] = [];
     bookData: any = {};
-    clickBook: boolean = false;
+    clickBook = false;
     constructor(private commonService: CommonService, private clubsService: ClubsService) {
         this.clubsService.reservations$.subscribe(reserv => {
             this.reservations = reserv;
@@ -51,7 +51,7 @@ export class BookComponent {
     }
     timeValidation = (data: any) => {
         if (this.clickBook) {
-            let time: number = data.value.getHours();
+            let time = data.value.getHours();
             if (MIN_START_TIME > time || MAX_END_TIME < time) {
                 data.rule.message = "This time is unavailable. Opening hours 06:00 AM - 10:00 PM";
                 return false;

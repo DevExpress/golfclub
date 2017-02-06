@@ -10,7 +10,7 @@ export class ChangeSearchComponent {
     @ViewChild(DxPopupComponent) search: DxPopupComponent;
     @Input() params: any;
     @Input() adaptOptions: any;
-    changeSearchVisible: boolean = false;
+    changeSearchVisible = false;
     hideSearch() {
         this.search.instance.hide();
     }
