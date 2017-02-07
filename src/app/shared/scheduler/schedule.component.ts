@@ -16,13 +16,11 @@ export class ScheduleComponent implements OnDestroy {
     data: any[] = [];
     schedulerData: any;
     schedulerResources: any;
-    initScheduler = false;
     groups: any[] = [];
     subscription: Subscription;
     reservationSubscription: Subscription;
     currentDate: Date;
     constructor(private clubsServise: ClubsService) {
-        let init = false;
         this.subscription = clubsServise.clubsData$.subscribe(items => {
             this.data = items;
             this.schedulerResources = this.clubsServise.getResources(this.data);
@@ -33,10 +31,7 @@ export class ScheduleComponent implements OnDestroy {
         });
         this.reservationSubscription = this.clubsServise.reservations$.subscribe(reserv => {
             this.schedulerData = reserv;
-            if (this.initScheduler) {
-                this.scheduler.instance.repaint();
-            }
-            this.initScheduler = true;
+            this.scheduler.instance.repaint();
         });
     }
     openBook(e: any) {
@@ -47,7 +42,6 @@ export class ScheduleComponent implements OnDestroy {
     }
     ngOnDestroy() {
         this.data = [];
-        this.initScheduler = false;
         this.subscription.unsubscribe();
         this.reservationSubscription.unsubscribe();
     }
