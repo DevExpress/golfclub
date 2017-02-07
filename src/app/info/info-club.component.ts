@@ -19,7 +19,7 @@ export class InfoComponent {
     @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
     searchingParams: any;
     club: any;
-    loadingData: boolean = true;
+    loadingData = true;
     adaptOptions: any;
     constructor(private clubsService: ClubsService,
         private commonService: CommonService,

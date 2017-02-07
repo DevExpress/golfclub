@@ -18,7 +18,7 @@ export class DescroptionComponent implements OnDestroy {
     club: any[] = [];
     bookData: any;
     searchingParams: any;
-    descriptionVisible: boolean = false;
+    descriptionVisible = false;
     clubsDataSubscription: Subscription;
     reservationSubscription: Subscription;
     constructor(private clubsService: ClubsService,

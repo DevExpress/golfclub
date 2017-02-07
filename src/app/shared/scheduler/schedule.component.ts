@@ -16,7 +16,7 @@ export class ScheduleComponent implements OnDestroy {
     data: any[] = [];
     schedulerData: any;
     schedulerResources: any;
-    initScheduler: boolean = false;
+    initScheduler = false;
     groups: any[] = [];
     subscription: Subscription;
     reservationSubscription: Subscription;
