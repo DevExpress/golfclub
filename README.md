@@ -5,7 +5,8 @@ For more information about DevExtreme, please visit [https://js.devexpress.com/]
 
 ## Prerequisites
 [Node.js and npm](https://docs.npmjs.com/getting-started/installing-node) are required.
-The app was build using angular-cli. Run `npm install angular-cli -g` to install it.
+Use the Node.js version 6.9.0 or higher and the npm version 3 or higher.
+The app was build using angular-cli. Run `npm install @angular/cli -g` to install it.
 
 ## Required packages
 Run `npm install` to install the required node packages. 
