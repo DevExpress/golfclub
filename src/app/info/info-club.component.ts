@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild, NgZone } from "@angular/core";
+﻿import { Component, ViewChild } from "@angular/core";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
@@ -23,14 +23,11 @@ export class InfoComponent {
     adaptOptions: any;
     constructor(private clubsService: ClubsService,
         private commonService: CommonService,
-        private adapt: AdaptService,
-        zone: NgZone) {
+        private adapt: AdaptService) {
         let that = this;
         this.searchingParams = commonService.getParams();
         this.adapt.adapt$.subscribe(item => {
-            zone.run(() => {
-                this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
-            });
+            this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
         clubsService.getClubById(that.searchingParams.clubId).done(function (data: any) {
             that.club = data;
