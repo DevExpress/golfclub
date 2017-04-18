@@ -19,23 +19,23 @@ export class ClubsListComponent {
     searchingParams: any;
     bookData: any;
     clubsSubscription: Subscription;
-    constructor(private clubsServise: ClubsService, private commonService: CommonService, private router: Router) {
+    constructor(private clubsService: ClubsService, private commonService: CommonService, private router: Router) {
         let init = false;
         this.searchingParams = commonService.getParams();
-        this.clubsSubscription = this.clubsServise.clubsData$.subscribe(items => {
+        this.clubsSubscription = this.clubsService.clubsData$.subscribe(items => {
             this.clubsData = items;
             this.setDataForService(this.clubsData);
         });
-        this.clubsServise.reservations$.subscribe(reserv => {
+        this.clubsService.reservations$.subscribe(reserv => {
             if (init) {
                 init = true;
-                this.clubsServise.setReservation(reserv);
+                this.clubsService.setReservation(reserv);
             }
         })
     }
     setDataForService(value: any) {
         let date = new Date(this.searchingParams.startDate);
-        this.clubsServise.setSchedulerData(value, date);
+        this.clubsService.setSchedulerData(value, date);
     }
     popupBook(data: any) {
         this.book.bookVisible = true;
