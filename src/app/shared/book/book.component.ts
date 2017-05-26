@@ -35,7 +35,6 @@ export class BookComponent {
         if (e.dataField == "startDate") {
             this.bookData.endDate = this.commonService.addTime(e.value, MAX_TIME_GAME);
             this.bookData.startDate = e.value;
-            this.form.instance.repaint();
         }
     }
     initBook() {
