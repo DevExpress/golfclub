@@ -1,5 +1,5 @@
 # Golf Club
-A sample Angular 2 application for booking golf course tee times. The app uses the DevExtreme UI Widgets such as: dxScheduler, dxForm, dxResponsiveBox, dxPopup.
+A sample Angular application for booking golf course tee times. The app uses the DevExtreme UI Widgets such as: dxScheduler, dxForm, dxResponsiveBox, dxPopup.
 
 For more information about DevExtreme, please visit [https://js.devexpress.com/](https://js.devexpress.com/).
 
