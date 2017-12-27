@@ -23,7 +23,7 @@ export class HomeComponent {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
     }
-    repaint (e) {
+    repaint (e: any) {
        if(e) {
            this.responsiveBox.instance.repaint();
        }

@@ -36,7 +36,7 @@ export class ClubsComponent implements OnInit {
     adaptation() {
         this.adapt.setAdaptValue();
     }
-    repaint (e) {
+    repaint (e: any) {
        if(e) {
            this.responsiveBox.instance.repaint();
        }

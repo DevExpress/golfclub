@@ -29,6 +29,6 @@
                 [text]="'Book ' + club[0].Name"></dx-button>
         </div>
      </div>
-    <book [data]="bookData" [bookVisible]="popupVisible" [adaptOptions]="adaptOptions"></book>
+    <book [data]="bookData" [adaptOptions]="adaptOptions"></book>
     <schedule [searchingParams]="searchingParams" [adaptOptions]="adaptOptions" (editBook)="popupBook($event)"></schedule>
 </div>

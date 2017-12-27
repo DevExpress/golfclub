@@ -35,7 +35,7 @@ export class InfoComponent {
             that.loadingData = false;
         });
     }
-    repaint (e) {
+    repaint (e: any) {
        if(e) {
            this.responsiveBox.instance.repaint();
        }
