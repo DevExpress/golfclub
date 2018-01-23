@@ -6,7 +6,7 @@
     <div class="bottom-side">
         <div *ngIf="offer" class="description">
             <div class="text">
-                {{offer.Price | currency:'USD':true}} per player<br />
+                {{offer.Price | currency:'USD':'symbol'}} per player<br />
                 {{offer.HoleCount}} holes
             </div>
             <div class="raiting">
