@@ -12,8 +12,8 @@ import { HomeModule } from "./home/home.module";
 import { ClubsModule } from "./clubs/clubs.module";
 import { InfoModule } from "./info/info.module";
 
+enableProdMode();
 
-enableProdMode()
 @NgModule({
     declarations: [AppComponent],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, ClubsService],
