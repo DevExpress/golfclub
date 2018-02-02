@@ -1,13 +1,13 @@
 @accent-color: #81bd00;
 
-/deep/.dx-overlay-content {
+::ng-deep.dx-overlay-content {
     height: auto;
 }
 
 .template-book {
     padding-left: 30px;
 
-    /deep/.dx-item.dx-box-item {
+    ::ng-deep.dx-item.dx-box-item {
         &:nth-child(2) {
             padding-bottom: 6px;
         }
@@ -18,7 +18,7 @@
         margin-right: 27px;
     }
 
-    &/deep/.dx-template-wrapper {
+    &::ng-deep.dx-template-wrapper {
         height: 379px;
     }
 
@@ -27,7 +27,7 @@
         color: @accent-color;
     }
 
-    /deep/.dx-popup-content {
+    ::ng-deep.dx-popup-content {
         padding-top: 0;
         padding-left: 0;
     }
@@ -56,7 +56,7 @@
     }
 }
 
-/deep/.book-popup {
+::ng-deep.book-popup {
     .dx-popup-title {
         &.dx-toolbar {
             padding-top: 5px;
