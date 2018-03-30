@@ -93,11 +93,19 @@
     width: 149px;
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
-    .result-search {
-        .img {
+@media screen and (max-width: 768px) {
+    .img {
             height: 210px;
             width: 100%;
+        }
+
+    ::ng-deep.result-search {
+        .full-description {
+            schedule {
+                .dx-scheduler {
+                    padding: 0 20px 30px 20px;
+                }
+            }
         }
     }
 

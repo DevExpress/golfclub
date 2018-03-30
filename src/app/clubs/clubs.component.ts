@@ -1,4 +1,5 @@
-﻿import { Component, OnInit, ViewChild } from "@angular/core";
+﻿import { Component, OnInit, ViewChild, Inject } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
@@ -28,10 +29,12 @@ export class ClubsComponent implements OnInit {
         private clubsService: ClubsService,
         private commonService: CommonService,
         private router: Router,
-        private adapt: AdaptService) {
+        private adapt: AdaptService,
+        @Inject(DOCUMENT) _document: any) {
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
+        this.adapt.setAdaptValue(_document.documentElement.clientWidth);
     }
     adaptation() {
         //this.adapt.setAdaptValue();

@@ -1,56 +1,15 @@
 ﻿<div class="page search-page">
-    <dx-responsive-box
-        (onOptionChanged)="adaptation()"
-        singleColumnScreen="xs">
-
-        <dxi-row [baseSize]="109" screen="lg sm md"></dxi-row>
-        <dxi-row [baseSize]="756" screen="lg sm md"></dxi-row>
-        <dxi-row [ratio]="1"></dxi-row>
-
-        <dxi-col [baseSize]="475" [ratio]="0"></dxi-col>
-        <dxi-col [baseSize]="550" [ratio]="0"></dxi-col>
-
-        <dxi-item class="info-search">
-            <dxi-location
-                [row]="0"
-                [col]="0"
-                screen="lg md sm">
-            </dxi-location>
-            <dxi-location
-                [row]="0"
-                [col]="0"
-                screen="xs">
-            </dxi-location>
+    <div class="info-container">
+        <div class="info-search">
             <searching-info [searchingParams]="searchingParams" (dataLoaded)="repaint($event)"></searching-info>
-        </dxi-item>
-        <dxi-item class="info-search">
-            <dxi-location
-                [row]="0"
-                [col]="1"
-                screen="lg md sm">
-            </dxi-location>
-            <dxi-location
-                [row]="1"
-                [col]="0"
-                screen="xs">
-            </dxi-location>
+        </div>
+        <div class="info-search">
             <change-search class="right-side" [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
-        </dxi-item>
-        <dxi-item class="result-search">
-            <dxi-location
-                [row]="1"
-                [col]="0"
-                [colspan]="2"
-                screen="lg md sm">
-            </dxi-location>
-            <dxi-location
-                [row]="2"
-                [col]="0"
-                screen="xs">
-            </dxi-location>
+        </div>
+    </div>
+        <div class="result-search">
             <club-list [adaptOptions]="adaptOptions"></club-list>
-        </dxi-item>
-    </dx-responsive-box>
+        </div>
     <dx-load-panel message="Loading..."
         [shading]="true"
         [showPane]="false"

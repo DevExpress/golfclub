@@ -94,10 +94,15 @@
     }
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
+@media screen and (max-width: 768px) {
+    ::ng-deep .result-search {
+        schedule {
+            .dx-scheduler {
+                padding: 0 20px 30px 20px;
+            }
+        }
+    }
 
-    .result-search {
-        club-list {
             .clubs {
                 padding: 22px 0 0 0;
 
@@ -131,8 +136,7 @@
                     }
                 }
             }
-        }
-    }
+
 
     .info-search {
         .info {
