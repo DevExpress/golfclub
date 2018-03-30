@@ -1,4 +1,5 @@
-﻿import { Component, ViewChild } from "@angular/core";
+﻿import { Component, ViewChild, Inject } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
@@ -23,12 +24,14 @@ export class InfoComponent {
     adaptOptions: any;
     constructor(private clubsService: ClubsService,
         private commonService: CommonService,
-        private adapt: AdaptService) {
+        private adapt: AdaptService,
+        @Inject(DOCUMENT) _document: any) {
         let that = this;
         this.searchingParams = commonService.getParams();
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
+        this.adapt.setAdaptValue(_document.documentElement.clientWidth);
         clubsService.getClubById(that.searchingParams.clubId).done(function (data: any) {
             that.club = data;
             that.clubsService.setClubsData([data]);
@@ -41,7 +44,7 @@ export class InfoComponent {
        }
     }
     adaptation() {
-        this.adapt.setAdaptValue();
+        //this.adapt.setAdaptValue();
     }
     ngOnInit() {
         this.adaptation();

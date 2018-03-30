@@ -12,8 +12,8 @@ const COUNT_DAYS = 1;
     templateUrl: "banner.component.html",
     styleUrls: ["banner.component.less"],
     providers: [
-        OfferService, 
-        CommonService, 
+        OfferService,
+        CommonService,
         DatePipe
     ]
 })

@@ -1,9 +1,18 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { Injectable, Renderer2 } from "@angular/core";
 import { Subject } from "rxjs/Subject";
 import devexpress  from "devextreme/core/devices"
 
 @Injectable()
 export class AdaptService {
+    constructor(private renderer: Renderer2) {
+        this.renderer.listen("window", "resize", (e) => {
+            let width = e.target.innerWidth;
+
+            this.setAdaptValue(width);
+
+        });
+    }
+
     private adapt = new Subject<any>();
     adapt$ = this.adapt.asObservable();
     smallSize: any = {
@@ -34,8 +43,7 @@ export class AdaptService {
             of: ".change-search-btn"
         }
     }
-    setAdaptValue() {
-        let width = window.innerWidth;
+    setAdaptValue(width) {
         devexpress.current({ platform: "generic" });
         if (devexpress.real().generic) {
             this.largeSize.pickerType = "calendar";

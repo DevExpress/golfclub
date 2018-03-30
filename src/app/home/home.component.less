@@ -1,15 +1,20 @@
 @accent-color: #81bd00;
 
 .responsive-home {
+    display: flex;
+    flex-direction: column;
     .site-content {
         margin-top: 2px;
     }
 
+    .info-devextreme {
+        margin: 0 auto;
+    }
+
     .left-side {
-        width: 499px;
+        width: 430px;
         padding-top: 29px;
-        float: left;
-        padding-right: 61px;
+        padding-right: 72px;
 
         .title {
             font-size: 24px;
@@ -24,10 +29,9 @@
     }
 
     .right-side {
-        width: 499px;
+        width: 487px;
         padding-top: 61px;
         padding-left: 9px;
-        float: right;
         text-align: left;
 
         p {
@@ -49,7 +53,6 @@
         color: @accent-color;
     }
 }
-
 .text-space {
     white-space: normal;
     text-align: left;
@@ -80,9 +83,9 @@
 }
 
 .background-header {
-    background: url(../../content/home/club1-home-banner.jpg) no-repeat center top;
-    height: 557px;
-    background-size: cover;
+    .header-container {
+        display: flex;
+    }
 
     .text-header {
         background-color: rgba(0, 0, 0, 0.7);
@@ -90,6 +93,8 @@
 }
 
 .widgets {
+    display: flex;
+    flex-direction: row;
     .left-side {
         width: 100px;
         padding-top: 0;
@@ -103,32 +108,50 @@
     }
 }
 
-::ng-deep.dx-responsivebox-screen-lg {
-    &.responsive-home {
-        > div {
-            > .dx-box-item {
-                &:first-child {
-                    text-align: center;
+@media screen and (min-width: 768px) {
+    .widgets {
+        .left-side {
+            padding-right: 0;
+        }
+    }
+    .info-devextreme {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 175px;
+    }
+
+    .background-header {
+        background-image: url(../../content/home/club1-home-banner.jpg);
+        height: 555px;
+        width: 100%;
+    }
+    .top-part {
+        .header-container {
+                    width: 1024px;
                     margin: 0 auto;
+                    padding-top: 110px;
+                    text-align: center;
+                    flex-direction: row;
                 }
 
-                &:nth-child(3) {
+        &:nth-child(3) {
                     text-align: center;
                     margin: 0 auto;
                 }
             }
-        }
-    }
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
-    .dx-item-content {
-        .info-devextreme {
+@media screen and (max-width: 768px) {
+    .top-part {
+        .header-container {
+                    flex-direction: column;
+                }
+    }
+    .info-devextreme {
             .left-side {
                 margin: 0 auto;
                 text-align: center;
                 width: 85%;
-                float: none;
                 padding-right: 0;
             }
 
@@ -136,14 +159,13 @@
                 margin: 0 auto;
                 text-align: center;
                 padding-top: 37px;
-                float: none;
                 padding-bottom: 15px;
                 width: 65%;
             }
 
             .widgets {
+                flex-direction: column;
                 .right-side {
-                    float: none;
                     padding-top: 0;
                     padding-left: 0;
                     width: 100px;
@@ -151,12 +173,10 @@
                 }
 
                 .left-side {
-                    float: none;
                     padding-top: 0;
                     width: 100px;
                     padding-right: 0;
                 }
             }
         }
-    }
 }

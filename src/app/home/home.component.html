@@ -1,76 +1,22 @@
 ﻿<div class="background-header">
-</div>
-<dx-responsive-box class="responsive-home"
-    (onOptionChanged)="adaptation()"
-    [(screenByWidth)]="getScreen"
-    singleColumnScreen="xs"
-    height="auto">
+<div class="top-part">
+<div class="header-container">
 
-    <dxi-row [baseSize]="414" screen="lg sm md"></dxi-row>
-    <dxi-row [baseSize]="384" screen="lg sm md"></dxi-row>
-    <dxi-row [baseSize]="175" screen="lg sm md"></dxi-row>
-    <dxi-row [ratio]="1"></dxi-row>
-    <dxi-row [ratio]="1"></dxi-row>
-
-    <dxi-col [baseSize]="475" [ratio]="0"></dxi-col>
-    <dxi-col [baseSize]="550" [ratio]="0"></dxi-col>
-
-    <dxi-item>
-        <dxi-location
-            [row]="0"
-            [col]="0"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="0"
-            [col]="0"
-            [colspan]="2"
-            screen="xs">
-        </dxi-location>
-        <div class="search-container">
+    <div class="search-container">
             <search-panel [data]="panel" [adaptOptions]="adaptOptions">
             </search-panel>
-        </div>
-    </dxi-item>
-    <dxi-item class="banner">
-        <dxi-location
-            [row]="0"
-            [col]="1"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="1"
-            [col]="0"
-            [colspan]="2"
-            screen="xs">
-        </dxi-location>
+    </div>
+    <div class="banner">
         <banner (dataLoaded)="repaint($event)"></banner>
-    </dxi-item>
-    <dxi-item>
-        <dxi-location
-            [row]="1"
-            [col]="0"
-            [colspan]="4"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="2"
-            [col]="0"
-            screen="xs">
-        </dxi-location>
+    </div>
+</div>
+</div>
+</div>
+<div  class="responsive-home">
+    <div>
         <clubs-list></clubs-list>
-    </dxi-item>
-    <dxi-item class="info-devextreme">
-        <dxi-location
-            [row]="2"
-            [col]="0"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="3"
-            [col]="0"
-            screen="xs">
-        </dxi-location>
+    </div>
+    <div class="info-devextreme">
         <div class="left-side text-space">
             <div class="title">Getting Started Today</div>
             <p>
@@ -79,18 +25,7 @@
             </p>
             <a target="_blank" href="http://js.devexpress.com/">Download your free 30-day trial</a>
         </div>
-    </dxi-item>
-    <dxi-item class="info-devextreme">
-        <dxi-location
-            [row]="2"
-            [col]="1"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="4"
-            [col]="0"
-            screen="xs">
-        </dxi-location>
+
         <div class="right-side text-space">
             <p>The following DevExtreme Widgets were used on this page:</p>
             <div class="widgets">
@@ -104,5 +39,5 @@
                 </div>
             </div>
         </div>
-    </dxi-item>
-</dx-responsive-box>
+    </div>
+</div>

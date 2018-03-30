@@ -3,7 +3,6 @@
     <dx-form class="search-form"
         [(formData)]="data"
         [showRequiredMark]="false"
-        [screenByWidth]="getScreen"
         [labelLocation]="adaptOptions.searchLabelLocation"
         (onFieldDataChanged)="fieldChanged($event)">
         <dxi-item
@@ -25,7 +24,7 @@
         <dxi-item
             itemType="group"
             [colCount]="2">
-            <dxi-item 
+            <dxi-item
                 dataField="startDate"
                 editorType="dxDateBox"
                 cssClass="groupItems"
@@ -43,7 +42,7 @@
                     message="From is required">
                 </dxi-validation-rule>
             </dxi-item>
-            <dxi-item 
+            <dxi-item
                 dataField="endDate"
                 editorType="dxDateBox"
                 cssClass="groupItems"
@@ -65,7 +64,7 @@
         <dxi-item
             itemType="group"
             [colCount]="2">
-            <dxi-item 
+            <dxi-item
                 dataField="players"
                 editorType="dxSelectBox"
                 cssClass="groupItems"
@@ -79,7 +78,7 @@
                     message="Players is required">
                 </dxi-validation-rule>
             </dxi-item>
-            <dxi-item 
+            <dxi-item
                 dataField="holes"
                 editorType="dxSelectBox"
                 cssClass="groupItems"

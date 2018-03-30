@@ -1,0 +1,327 @@
+diff --git a/angular-cli.json b/angular-cli.json
+index 722a658..c1cdf73 100644
+--- a/angular-cli.json
++++ b/angular-cli.json
+@@ -6,7 +6,7 @@
+   "apps": [
+     {
+       "root": "src",
+-      "outDir": "dist",
++      "outDir": "dist/browser",
+       "assets": [
+         "content",
+         "favicon.ico"
+@@ -27,7 +27,32 @@
+         "dev": "environments/environment.ts",
+         "prod": "environments/environment.prod.ts"
+       }
+-    }
++    },
++    {
++      "platform": "server",
++      "root": "src",
++      "outDir": "dist/server",
++      "assets": [
++          "assets",
++          "favicon.ico"
++      ],
++      "index": "index.html",
++      "main": "main.server.ts",
++      "test": "test.ts",
++      "tsconfig": "tsconfig.server.json",
++      "testTsconfig": "tsconfig.spec.json",
++      "prefix": "app",
++      "styles": [
++        "../node_modules/devextreme/dist/css/dx.common.css",
++        "css/tb.light.green.css"
++      ],
++      "scripts": [],
++      "environmentSource": "environments/environment.ts",
++      "environments": {
++          "dev": "environments/environment.ts",
++          "prod": "environments/environment.prod.ts"
++      }
++  }
+   ],
+   "addons": [],
+   "packages": [],
+diff --git a/package.json b/package.json
+index 59d78b5..1fa566a 100644
+--- a/package.json
++++ b/package.json
+@@ -6,7 +6,11 @@
+     "start": "ng serve",
+     "lint": "tslint \"src/**/*.ts\"",
+     "pree2e": "webdriver-manager update",
+-    "e2e": "protractor"
++    "e2e": "protractor",
++    "build:universal": "npm run build:client-and-server-bundles && npm run webpack:server",
++    "serve:universal": "node dist/server.js",
++    "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false",
++    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
+   },
+   "dependencies": {
+     "@angular/animations": "^5.2.0",
+@@ -17,11 +21,15 @@
+     "@angular/http": "^5.2.0",
+     "@angular/platform-browser": "^5.2.0",
+     "@angular/platform-browser-dynamic": "^5.2.0",
++    "@angular/platform-server": "^5.2.5",
+     "@angular/router": "^5.2.0",
++    "@nguniversal/express-engine": "^5.0.0-beta.5",
++    "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.5",
+     "core-js": "^2.4.1",
+-    "devextreme": "17.2",
+-    "devextreme-angular": "17.2",
++    "devextreme": "^18.1.1-beta.2",
++    "devextreme-angular": "^18.1.1-beta.2",
+     "rxjs": "^5.5.0",
++    "ts-loader": "^3.5.0",
+     "zone.js": "^0.8.19"
+   },
+   "devDependencies": {
+diff --git a/server.ts b/server.ts
+new file mode 100644
+index 0000000..7639336
+--- /dev/null
++++ b/server.ts
+@@ -0,0 +1,53 @@
++// These are important and needed before anything else
++import 'zone.js/dist/zone-node';
++import 'reflect-metadata';
++
++import { enableProdMode } from '@angular/core';
++
++import * as express from 'express';
++import { join } from 'path';
++
++// Faster server renders w/ Prod mode (dev mode never needed)
++enableProdMode();
++
++// Express server
++const app = express();
++
++const PORT = process.env.PORT || 4000;
++const DIST_FOLDER = join(process.cwd(), 'dist');
++
++// * NOTE :: leave this as require() since this file is built Dynamically from webpack
++const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main.bundle');
++
++// Express Engine
++import { ngExpressEngine } from '@nguniversal/express-engine';
++// Import module map for lazy loading
++import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
++
++app.engine('html', ngExpressEngine({
++  bootstrap: AppServerModuleNgFactory,
++  providers: [
++    provideModuleMap(LAZY_MODULE_MAP)
++  ]
++}));
++
++app.set('view engine', 'html');
++app.set('views', join(DIST_FOLDER, 'browser'));
++
++// TODO: implement data requests securely
++app.get('/api/*', (req, res) => {
++  res.status(404).send('data requests are not supported');
++});
++
++// Server static files from /browser
++app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
++
++// All regular routes use the Universal engine
++app.get('*', (req, res) => {
++  res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
++});
++
++// Start up the Node server
++app.listen(PORT, () => {
++  console.log(`Node server listening on http://localhost:${PORT}`);
++});
+\ No newline at end of file
+diff --git a/src/app/adapt.service.ts b/src/app/adapt.service.ts
+index f1431b1..f4eadc6 100644
+--- a/src/app/adapt.service.ts
++++ b/src/app/adapt.service.ts
+@@ -35,7 +35,7 @@ export class AdaptService {
+         }
+     }
+     setAdaptValue() {
+-        let width = window.innerWidth;
++        let width = 1000;//window.innerWidth;
+         devexpress.current({ platform: "generic" });
+         if (devexpress.real().generic) {
+             this.largeSize.pickerType = "calendar";
+diff --git a/src/app/app.component.ts b/src/app/app.component.ts
+index a4e9fa7..002e8db 100644
+--- a/src/app/app.component.ts
++++ b/src/app/app.component.ts
+@@ -28,7 +28,7 @@ export class AppComponent {
+         this.adapt.setAdaptValue();
+     }
+     getScreen() {
+-        let width = window.innerWidth;
++        let width = 1000;//window.innerWidth;
+ 
+         if (width < 768) 
+             return "xs";
+diff --git a/src/app/app.module.ts b/src/app/app.module.ts
+index f2f67aa..744745b 100644
+--- a/src/app/app.module.ts
++++ b/src/app/app.module.ts
+@@ -18,7 +18,7 @@ enableProdMode();
+     declarations: [AppComponent],
+     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, ClubsService],
+     imports: [
+-        BrowserModule,
++        BrowserModule.withServerTransition({ appId: 'golfclub' }),
+         DxResponsiveBoxModule,
+         DxTemplateModule,
+         SharedModule,
+diff --git a/src/app/app.server.module.ts b/src/app/app.server.module.ts
+new file mode 100644
+index 0000000..2568435
+--- /dev/null
++++ b/src/app/app.server.module.ts
+@@ -0,0 +1,16 @@
++import { NgModule } from '@angular/core';
++import { ServerModule } from '@angular/platform-server';
++import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
++
++import { AppModule } from './app.module';
++import { AppComponent } from './app.component';
++
++@NgModule({
++  imports: [
++    AppModule,
++    ServerModule,
++    ModuleMapLoaderModule
++  ],
++  bootstrap: [AppComponent],
++})
++export class AppServerModule {}
+diff --git a/src/app/common.service.ts b/src/app/common.service.ts
+index 47dcac0..d5fbf78 100644
+--- a/src/app/common.service.ts
++++ b/src/app/common.service.ts
+@@ -38,16 +38,17 @@ export class CommonService {
+         cookieValue += "expires=" + cookiesFinishDate.toUTCString() + ";";
+         cookieValue += "path=/";
+ 
+-        document.cookie = cookieValue;
++        // document.cookie = cookieValue;
+     }
+     getCookie(name: string) {
+-        let matches = document.cookie.match(new RegExp(
+-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+-        ));
++        // let matches = document.cookie.match(new RegExp(
++        //     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
++        // ));
+ 
+-        return matches ? decodeURIComponent(matches[1]) : undefined;
++        // return matches ? decodeURIComponent(matches[1]) : undefined;
++        return undefined;
+     }
+     deleteCookie(name: string) {
+-        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
++        // document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+     }
+ }
+\ No newline at end of file
+diff --git a/src/app/shared/search-panel/search-panel.component.ts b/src/app/shared/search-panel/search-panel.component.ts
+index 0cae429..4b5dda8 100644
+--- a/src/app/shared/search-panel/search-panel.component.ts
++++ b/src/app/shared/search-panel/search-panel.component.ts
+@@ -57,7 +57,7 @@ export class SearchPanelComponent {
+         }
+     }
+     getScreen() {
+-        let width = window.innerWidth;
++        let width = 1000;//window.innerWidth;
+         if (width < 768)
+             return "xs";
+         else
+diff --git a/src/main.server.ts b/src/main.server.ts
+new file mode 100644
+index 0000000..d7c01cd
+--- /dev/null
++++ b/src/main.server.ts
+@@ -0,0 +1 @@
++export { AppServerModule } from './app/app.server.module';
+diff --git a/src/tsconfig.server.json b/src/tsconfig.server.json
+new file mode 100644
+index 0000000..c74418d
+--- /dev/null
++++ b/src/tsconfig.server.json
+@@ -0,0 +1,18 @@
++{
++  "extends": "../tsconfig.json",
++  "compilerOptions": {
++    "outDir": "../out-tsc/app",
++    "baseUrl": "./",
++    "module": "commonjs",
++    "types": [],
++    "lib": ["es6", "dom"],
++    "noImplicitAny": false
++  },
++  "exclude": [
++    "test.ts",
++    "**/*.spec.ts"
++  ],
++  "angularCompilerOptions": {
++    "entryModule": "app/app.server.module#AppServerModule"
++  }
++}
+diff --git a/tsconfig.json b/tsconfig.json
+index ff72b9d..2aaede0 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -7,7 +7,7 @@
+     "emitDecoratorMetadata": true,
+     "experimentalDecorators": true,
+     "removeComments": false,
+-    "noImplicitAny": true,
++    "noImplicitAny": false,
+     "suppressImplicitAnyIndexErrors": true
+   },
+   "compileOnSave": true
+diff --git a/webpack.server.config.js b/webpack.server.config.js
+new file mode 100644
+index 0000000..39accdc
+--- /dev/null
++++ b/webpack.server.config.js
+@@ -0,0 +1,31 @@
++const path = require('path');
++const webpack = require('webpack');
++
++module.exports = {
++  entry: { server: './server.ts' },
++  resolve: { extensions: ['.js', '.ts'] },
++  target: 'node',
++  // this makes sure we include node_modules and other 3rd party libraries
++  externals: [/(node_modules|main\..*\.js)/],
++  output: {
++    path: path.join(__dirname, 'dist'),
++    filename: '[name].js'
++  },
++  module: {
++    rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
++  },
++  plugins: [
++    // Temporary Fix for issue: https://github.com/angular/angular/issues/11580
++    // for 'WARNING Critical dependency: the request of a dependency is an expression'
++    new webpack.ContextReplacementPlugin(
++      /(.+)?angular(\\|\/)core(.+)?/,
++      path.join(__dirname, 'src'), // location of your src
++      {} // a map of your routes
++    ),
++    new webpack.ContextReplacementPlugin(
++      /(.+)?express(\\|\/)(.+)?/,
++      path.join(__dirname, 'src'),
++      {}
++    )
++  ]
++};
+\ No newline at end of file

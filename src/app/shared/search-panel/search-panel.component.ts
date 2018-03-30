@@ -57,7 +57,7 @@ export class SearchPanelComponent {
         }
     }
     getScreen() {
-        let width = window.innerWidth;
+        let width = 1000;//window.innerWidth;
         if (width < 768)
             return "xs";
         else

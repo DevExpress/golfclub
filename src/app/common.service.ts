@@ -38,16 +38,17 @@ export class CommonService {
         cookieValue += "expires=" + cookiesFinishDate.toUTCString() + ";";
         cookieValue += "path=/";
 
-        document.cookie = cookieValue;
+        // document.cookie = cookieValue;
     }
     getCookie(name: string) {
-        let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
-        ));
+        // let matches = document.cookie.match(new RegExp(
+        //     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+        // ));
 
-        return matches ? decodeURIComponent(matches[1]) : undefined;
+        // return matches ? decodeURIComponent(matches[1]) : undefined;
+        return undefined;
     }
     deleteCookie(name: string) {
-        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        // document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     }
 }

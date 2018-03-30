@@ -22,6 +22,11 @@ body {
     }
 }
 
+.golf-app {
+    display: flex;
+    flex-direction: column;
+}
+
 .content {
     width: 1024px;
     margin: auto;
@@ -123,7 +128,10 @@ home {
     }
 }
 
-.dx-responsivebox-screen-xs {
+@media screen and (max-width: 768px) {
+    home {
+        margin-top: 0;
+    }
     .content {
         width: 100%;
     }
@@ -147,7 +155,7 @@ home {
     }
 }
 
-.dx-responsivebox-screen-lg {
+@media screen and (min-width: 768px) {
     .page {
         width: 1024px;
         margin: 0 auto;

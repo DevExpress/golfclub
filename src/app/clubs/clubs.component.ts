@@ -34,7 +34,7 @@ export class ClubsComponent implements OnInit {
         });
     }
     adaptation() {
-        this.adapt.setAdaptValue();
+        //this.adapt.setAdaptValue();
     }
     repaint (e: any) {
        if(e) {

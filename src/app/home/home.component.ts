@@ -1,5 +1,5 @@
-﻿import { Component, ViewChild } from "@angular/core";
-import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
+﻿import { Component, Inject } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
 import { AdaptService } from "../adapt.service";
 
 @Component({
@@ -9,7 +9,6 @@ import { AdaptService } from "../adapt.service";
     providers: [AdaptService]
 })
 export class HomeComponent {
-    @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
     panel: any = {
         location: null,
         startDate: null,
@@ -18,24 +17,25 @@ export class HomeComponent {
         players: null
     };
     adaptOptions: any;
-    constructor(private adapt: AdaptService) {
+    constructor(private adapt: AdaptService, @Inject(DOCUMENT) _document: any) {
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
+        this.adapt.setAdaptValue(_document.documentElement.clientWidth);
     }
     repaint (e: any) {
        if(e) {
-           this.responsiveBox.instance.repaint();
+           //this.responsiveBox.instance.repaint();
        }
     }
     adaptation() {
-        this.adapt.setAdaptValue();
+       // this.adapt.setAdaptValue();
     }
     ngOnInit() {
         this.adaptation();
     }
     getScreen() {
-        var width = window.innerWidth;
+        var width = 1000//window.innerWidth;
 
         if (width < 768)
             return "xs";
