@@ -126,57 +126,55 @@
         width: 100%;
     }
     .top-part {
+        display: flex;
         .header-container {
-                    width: 1024px;
-                    margin: 0 auto;
-                    padding-top: 110px;
-                    text-align: center;
-                    flex-direction: row;
-                }
+            margin: 0 auto;
+            padding-top: 110px;
+        }
 
         &:nth-child(3) {
-                    text-align: center;
-                    margin: 0 auto;
-                }
-            }
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
     .top-part {
         .header-container {
-                    flex-direction: column;
-                }
+            flex-direction: column;
+        }
     }
     .info-devextreme {
-            .left-side {
+        .left-side {
+            margin: 0 auto;
+            text-align: center;
+            width: 85%;
+            padding-right: 0;
+        }
+
+        .right-side {
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 37px;
+            padding-bottom: 15px;
+            width: 65%;
+        }
+
+        .widgets {
+            flex-direction: column;
+            .right-side {
+                padding-top: 0;
+                padding-left: 0;
+                width: 100px;
                 margin: 0 auto;
-                text-align: center;
-                width: 85%;
+            }
+
+            .left-side {
+                padding-top: 0;
+                width: 100px;
                 padding-right: 0;
             }
-
-            .right-side {
-                margin: 0 auto;
-                text-align: center;
-                padding-top: 37px;
-                padding-bottom: 15px;
-                width: 65%;
-            }
-
-            .widgets {
-                flex-direction: column;
-                .right-side {
-                    padding-top: 0;
-                    padding-left: 0;
-                    width: 100px;
-                    margin: 0 auto;
-                }
-
-                .left-side {
-                    padding-top: 0;
-                    width: 100px;
-                    padding-right: 0;
-                }
-            }
         }
+    }
 }

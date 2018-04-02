@@ -1,7 +1,10 @@
-import { Component, ViewEncapsulation, Inject } from "@angular/core";
+import { Component, ViewEncapsulation, PLATFORM_ID, Inject } from "@angular/core";
+import { isPlatformServer } from '@angular/common';
+import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { DOCUMENT } from "@angular/common";
-import { Router, NavigationEnd } from "@angular/router";
 import { AdaptService } from "./adapt.service";
+
+const IS_SSR = makeStateKey<any>('isServerSideRendering');
 
 @Component({
     selector: "golf-club-app",
@@ -13,31 +16,17 @@ import { AdaptService } from "./adapt.service";
 
 export class AppComponent {
     adaptOptions: any;
-    constructor(private adapt: AdaptService, router: Router, @Inject(DOCUMENT) _document: any) {
+    constructor(private adapt: AdaptService,
+        @Inject(DOCUMENT) _document: any,
+        private transferState: TransferState,
+        @Inject(PLATFORM_ID) private platformId: any) {
         this.adapt.adapt$.subscribe(item => {
-            //console.log("set opt");
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
-
         this.adapt.setAdaptValue(_document.documentElement.clientWidth);
-        router.events.subscribe((val) => {
-            if(val instanceof NavigationEnd){
-                //this.box.instance.repaint();
-            }
-        });
-    }
-    adaptation() {
-        //this.adapt.setAdaptValue();
-    }
-    getScreen() {
-        let width = 1000;//window.innerWidth;
 
-        if (width < 768)
-            return "xs";
-        else
-            return "lg";
-    }
-    ngOnInit() {
-        this.adaptation();
+        if (isPlatformServer(this.platformId)) {
+            this.transferState.set(IS_SSR, true);
+        }
     }
 }

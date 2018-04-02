@@ -23,23 +23,4 @@ export class HomeComponent {
         });
         this.adapt.setAdaptValue(_document.documentElement.clientWidth);
     }
-    repaint (e: any) {
-       if(e) {
-           //this.responsiveBox.instance.repaint();
-       }
-    }
-    adaptation() {
-       // this.adapt.setAdaptValue();
-    }
-    ngOnInit() {
-        this.adaptation();
-    }
-    getScreen() {
-        var width = 1000//window.innerWidth;
-
-        if (width < 768)
-            return "xs";
-        else
-            return "lg";
-    }
 }

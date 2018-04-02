@@ -1,12 +1,10 @@
-﻿import { Component, OnInit, ViewChild, Inject } from "@angular/core";
+﻿import { Component, OnInit, Inject } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
 import { AdaptService } from "../adapt.service";
-import { DxResponsiveBoxComponent } from "devextreme-angular";
-
 
 @Component({
     selector: "clubs",
@@ -20,7 +18,6 @@ import { DxResponsiveBoxComponent } from "devextreme-angular";
     ]
 })
 export class ClubsComponent implements OnInit {
-    @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
     searchingParams: any;
     loadingData = true;
     navigate: any;
@@ -36,23 +33,14 @@ export class ClubsComponent implements OnInit {
         });
         this.adapt.setAdaptValue(_document.documentElement.clientWidth);
     }
-    adaptation() {
-        //this.adapt.setAdaptValue();
-    }
-    repaint (e: any) {
-       if(e) {
-           this.responsiveBox.instance.repaint();
-       }
-    }
     ngOnInit() {
         let that = this;
-        this.adaptation();
         this.navigate = this.route.params.subscribe((params: any) => {
             that.searchingParams = that.commonService.getParams();
             that.clubsService.getFoundClubs(that.searchingParams.location).done(function (data: any) {
                 that.clubsService.setClubsData(data);
                 that.loadingData = false;
             });
-        })
+        });
     }
 }

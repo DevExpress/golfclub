@@ -1,10 +1,12 @@
 ﻿import { Component, AfterViewInit } from "@angular/core";
+import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { ClubsService } from "../../clubs.service";
 import { Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../../common.service";
 
 const COUNT_DAYS = 1;
+const IS_SSR = makeStateKey<any>('isServerSideRendering');
 
 @Component({
     selector: "clubs-list",
@@ -20,6 +22,7 @@ export class ClubsComponent implements AfterViewInit {
     loadingData: boolean;
     clubs: any[];
     constructor(private clubsService: ClubsService,
+        private transferState: TransferState,
         private common: CommonService,
         private router: Router,
         private datePipe: DatePipe) {
@@ -35,7 +38,9 @@ export class ClubsComponent implements AfterViewInit {
         }
     }
     ngAfterViewInit() {
-        this.loadingData = true;
+        if(!this.transferState.hasKey(IS_SSR)) {
+            this.loadingData = true;
+        }
     }
     goToInfo(e: any) {
         this.router.navigate(["info", {

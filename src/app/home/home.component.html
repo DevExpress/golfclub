@@ -1,16 +1,15 @@
 ﻿<div class="background-header">
-<div class="top-part">
-<div class="header-container">
-
-    <div class="search-container">
-            <search-panel [data]="panel" [adaptOptions]="adaptOptions">
-            </search-panel>
+    <div class="top-part">
+        <div class="header-container">
+            <div class="search-container">
+                <search-panel [data]="panel" [adaptOptions]="adaptOptions">
+                </search-panel>
+            </div>
+            <div class="banner">
+                <banner></banner>
+            </div>
+        </div>
     </div>
-    <div class="banner">
-        <banner (dataLoaded)="repaint($event)"></banner>
-    </div>
-</div>
-</div>
 </div>
 <div  class="responsive-home">
     <div>
@@ -25,7 +24,6 @@
             </p>
             <a target="_blank" href="http://js.devexpress.com/">Download your free 30-day trial</a>
         </div>
-
         <div class="right-side text-space">
             <p>The following DevExtreme Widgets were used on this page:</p>
             <div class="widgets">

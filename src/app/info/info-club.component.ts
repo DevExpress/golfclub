@@ -1,10 +1,9 @@
-﻿import { Component, ViewChild, Inject } from "@angular/core";
+﻿import { Component, Inject } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
 import { AdaptService } from "../adapt.service";
-import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
 
 @Component({
     selector: "info",
@@ -17,7 +16,6 @@ import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
     ]
 })
 export class InfoComponent {
-    @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
     searchingParams: any;
     club: any;
     loadingData = true;
@@ -37,16 +35,5 @@ export class InfoComponent {
             that.clubsService.setClubsData([data]);
             that.loadingData = false;
         });
-    }
-    repaint (e: any) {
-       if(e) {
-           this.responsiveBox.instance.repaint();
-       }
-    }
-    adaptation() {
-        //this.adapt.setAdaptValue();
-    }
-    ngOnInit() {
-        this.adaptation();
     }
 }
