@@ -1,10 +1,11 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { Injectable, Inject } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
 import { ActivatedRoute, Params } from "@angular/router";
 import { DatePipe } from "@angular/common";
 
 @Injectable()
 export class CommonService {
-    constructor(private datePipe: DatePipe, private route: ActivatedRoute) {
+    constructor(private datePipe: DatePipe, private route: ActivatedRoute, @Inject(DOCUMENT) private _document: any) {
     }
     addDays(date: Date, days: number) {
         let result = new Date(date);
@@ -38,17 +39,16 @@ export class CommonService {
         cookieValue += "expires=" + cookiesFinishDate.toUTCString() + ";";
         cookieValue += "path=/";
 
-        // document.cookie = cookieValue;
+        this._document.cookie = cookieValue;
     }
     getCookie(name: string) {
-        // let matches = document.cookie.match(new RegExp(
-        //     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
-        // ));
+        let matches = this._document.cookie.match(new RegExp(
+             "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+        ));
 
-        // return matches ? decodeURIComponent(matches[1]) : undefined;
-        return undefined;
+        return matches ? decodeURIComponent(matches[1]) : undefined;
     }
     deleteCookie(name: string) {
-        // document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        this._document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     }
 }
