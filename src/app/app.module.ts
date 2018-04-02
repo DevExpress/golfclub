@@ -20,6 +20,7 @@ enableProdMode();
         BrowserModule.withServerTransition({ appId: 'golfclub' }),
         DxTemplateModule,
         SharedModule,
+        BrowserTransferStateModule,
         HomeModule,
         ClubsModule,
         InfoModule,
