@@ -1,8 +1,7 @@
 import { NgModule, enableProdMode } from "@angular/core";
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { BrowserModule, BrowserTransferStateModule } from "@angular/platform-browser";
-import { DxResponsiveBoxModule,
-         DxTemplateModule } from "devextreme-angular";
+import { DxTemplateModule } from "devextreme-angular";
 import { AppComponent } from "./app.component";
 
 import { ClubsService } from "./clubs.service";
@@ -19,7 +18,6 @@ enableProdMode();
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, ClubsService],
     imports: [
         BrowserModule.withServerTransition({ appId: 'golfclub' }),
-        DxResponsiveBoxModule,
         DxTemplateModule,
         SharedModule,
         HomeModule,
