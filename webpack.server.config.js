@@ -16,6 +16,7 @@ module.exports = {
   plugins: [
     new webpack.ContextReplacementPlugin(
       /(.+)?angular(\\|\/)core(.+)?/,
+      path.join(__dirname, 'src'),
       {}
     ),
     new webpack.ContextReplacementPlugin(
