@@ -9,10 +9,8 @@ export class AdaptService {
             let width = e.target.innerWidth;
 
             this.setAdaptValue(width);
-
         });
     }
-
     private adapt = new Subject<any>();
     adapt$ = this.adapt.asObservable();
     smallSize: any = {
