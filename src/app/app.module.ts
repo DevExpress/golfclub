@@ -1,5 +1,5 @@
 import { NgModule, enableProdMode } from "@angular/core";
-import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { BrowserModule, BrowserTransferStateModule } from "@angular/platform-browser";
 import { DxTemplateModule } from "devextreme-angular";
 import { AppComponent } from "./app.component";
@@ -15,7 +15,7 @@ enableProdMode();
 
 @NgModule({
     declarations: [AppComponent],
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, ClubsService],
+    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, ClubsService],
     imports: [
         BrowserModule.withServerTransition({ appId: 'golfclub' }),
         DxTemplateModule,

@@ -1,4 +1,5 @@
-﻿import { Component, Input, Output, EventEmitter, ViewChild, OnDestroy, ViewEncapsulation } from "@angular/core";
+﻿import { Component, Input, Output, EventEmitter, ViewChild, OnDestroy, ViewEncapsulation, Inject, PLATFORM_ID } from "@angular/core";
+import { isPlatformServer } from '@angular/common';
 import { ClubsService } from "../../clubs.service";
 import { Subscription } from "rxjs/Subscription";
 import { DxSchedulerComponent } from "devextreme-angular/ui/scheduler";
@@ -20,13 +21,13 @@ export class ScheduleComponent implements OnDestroy {
     subscription: Subscription;
     reservationSubscription: Subscription;
     currentDate: Date;
-    constructor(private clubsServise: ClubsService) {
+    constructor(private clubsServise: ClubsService, @Inject(PLATFORM_ID) platformId: any) {
         this.subscription = clubsServise.clubsData$.subscribe(items => {
             this.data = items;
             this.schedulerResources = this.clubsServise.getResources(this.data);
-            if (this.data.length == 1)
+            if (this.data.length === 1 || isPlatformServer(platformId))
                 this.groups = [];
-            else 
+            else
                 this.groups = ["Id"];
         });
         this.reservationSubscription = this.clubsServise.reservations$.subscribe(reserv => {
