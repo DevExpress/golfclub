@@ -28,13 +28,13 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
-app.get('/api/*', (req, res) => {
+app.get('/api/*', (req: any, res: any) => {
   res.status(404).send('data requests are not supported');
 });
 
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
-app.get('*', (req, res) => {
+app.get('*', (req: any, res: any) => {
   res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
 });
 
