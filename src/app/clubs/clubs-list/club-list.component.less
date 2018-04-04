@@ -94,41 +94,44 @@
     }
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
+@media screen and (max-width: 768px) {
+    ::ng-deep .result-search {
+        schedule {
+            .dx-scheduler {
+                padding: 0 20px 30px 20px;
+            }
+        }
+    }
 
-    .result-search {
-        club-list {
-            .clubs {
-                padding: 22px 0 0 0;
+    .clubs {
+        padding: 22px 0 0 0;
 
-                .club {
-                    padding: 0;
-                    margin-right: 0;
-                    display: block;
+        .club {
+            padding: 0;
+            margin-right: 0;
+            display: block;
 
-                    .image {
-                        width: 87.5%;
-                    }
+            .image {
+                width: 87.5%;
+            }
 
-                    .info {
-                        display: inline-block;
-                        padding-bottom: 30px;
+            .info {
+                display: inline-block;
+                padding-bottom: 30px;
 
-                        .name {
-                            margin-top: 0;
-                            font-weight: 500;
-                            font-size: 17px;
-                        }
+                .name {
+                    margin-top: 0;
+                    font-weight: 500;
+                    font-size: 17px;
+                }
 
-                        .address {
-                            margin-bottom: 12px;
-                        }
+                .address {
+                    margin-bottom: 12px;
+                }
 
 
-                        .button {
-                            width: 240px;
-                        }
-                    }
+                .button {
+                    width: 240px;
                 }
             }
         }

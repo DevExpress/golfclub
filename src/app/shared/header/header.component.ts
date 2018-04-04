@@ -1,7 +1,7 @@
-import { Component, ViewChild, Input } from "@angular/core";
+import { Component, ViewChild, Input, PLATFORM_ID, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonService } from "../../common.service"
-import { DatePipe } from "@angular/common";
+import { DatePipe, isPlatformBrowser } from "@angular/common";
 import { DxFormComponent } from "devextreme-angular/ui/form";
 
 const USER_NAME_KEY = "golfClubUser";
@@ -25,9 +25,12 @@ export class HeaderComponent {
     };
     loginVisible: boolean;
     constructor(private router: Router,
+        @Inject(PLATFORM_ID) platformId: any,
         private common: CommonService,
         private datePipe: DatePipe) {
-        this.authorizationCheck();
+        if(isPlatformBrowser(platformId)) {
+            this.authorizationCheck();
+        }
     }
     showWelcome() {
         let form = this.form.instance,

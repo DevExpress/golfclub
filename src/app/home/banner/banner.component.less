@@ -71,67 +71,64 @@
     }
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
-    .banner {
+@media screen and (max-width: 768px) {
+    ::ng-deep.banner {
         background: url(../../../content/home/club1-home-banner.jpg) no-repeat center top;
         background-size: cover;
         height: auto;
+    }
+    .banner-container {
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px 0;
+        width: 88%;
 
-        banner {
-            .banner-container {
-                text-align: center;
-                margin: 0 auto;
-                padding: 20px 0;
-                width: 88%;
+        .bottom-side {
+            .description {
+                display: block;
 
-                .bottom-side {
-                    .description {
-                        display: block;
-
-                        .text {
-                            width: auto;
-                            margin-left: 0;
-                        }
-                    }
-                }
-
-                .offer {
-                    margin-left: 0;
-                }
-
-                .offer-name {
+                .text {
                     width: auto;
-                    padding-bottom: 15px;
                     margin-left: 0;
-                }
-
-                .raiting {
-                    margin: 0 auto;
-                    text-align: center;
-                }
-
-                .more-info {
-                    left: 0;
-                    top: 30px;
-                    margin-bottom: 50px;
-                    width: 85%;
-                    height: 50px;
-                }
-
-                .more-info.dx-button {
-                    .dx-button-text {
-                        font-size: 18px;
-                    }
-                }
-
-                .top-side {
-                    height: auto;
-                }
-
-                .bottom-side {
-                    height: auto;
                 }
             }
+        }
+
+        .offer {
+            margin-left: 0;
+        }
+
+        .offer-name {
+            width: auto;
+            padding-bottom: 15px;
+            margin-left: 0;
+        }
+
+        .raiting {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .more-info {
+            left: 0;
+            top: 30px;
+            margin-bottom: 50px;
+            width: 85%;
+            height: 50px;
+        }
+
+        .more-info.dx-button {
+            ::ng-deep.dx-button-text {
+                font-size: 18px;
+            }
+        }
+
+        .top-side {
+            height: auto;
+        }
+
+        .bottom-side {
+            height: auto;
         }
     }
 }

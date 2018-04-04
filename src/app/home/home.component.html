@@ -1,108 +1,43 @@
-﻿<div class="background-header">
+﻿<div class="background-header" [ngStyle]="{'background-image':'url(../../content/home/club1-home-banner.jpg)'}">
+    <div class="top-part">
+        <div class="header-container">
+            <div class="search-container">
+                <search-panel [data]="panel" [adaptOptions]="adaptOptions">
+                </search-panel>
+            </div>
+            <div class="banner">
+                <banner></banner>
+            </div>
+        </div>
+    </div>
 </div>
-<dx-responsive-box class="responsive-home"
-    (onOptionChanged)="adaptation()"
-    [(screenByWidth)]="getScreen"
-    singleColumnScreen="xs"
-    height="auto">
-
-    <dxi-row [baseSize]="414" screen="lg sm md"></dxi-row>
-    <dxi-row [baseSize]="384" screen="lg sm md"></dxi-row>
-    <dxi-row [baseSize]="175" screen="lg sm md"></dxi-row>
-    <dxi-row [ratio]="1"></dxi-row>
-    <dxi-row [ratio]="1"></dxi-row>
-
-    <dxi-col [baseSize]="475" [ratio]="0"></dxi-col>
-    <dxi-col [baseSize]="550" [ratio]="0"></dxi-col>
-
-    <dxi-item>
-        <dxi-location
-            [row]="0"
-            [col]="0"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="0"
-            [col]="0"
-            [colspan]="2"
-            screen="xs">
-        </dxi-location>
-        <div class="search-container">
-            <search-panel [data]="panel" [adaptOptions]="adaptOptions">
-            </search-panel>
-        </div>
-    </dxi-item>
-    <dxi-item class="banner">
-        <dxi-location
-            [row]="0"
-            [col]="1"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="1"
-            [col]="0"
-            [colspan]="2"
-            screen="xs">
-        </dxi-location>
-        <banner (dataLoaded)="repaint($event)"></banner>
-    </dxi-item>
-    <dxi-item>
-        <dxi-location
-            [row]="1"
-            [col]="0"
-            [colspan]="4"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="2"
-            [col]="0"
-            screen="xs">
-        </dxi-location>
+<div  class="responsive-home">
+    <div>
         <clubs-list></clubs-list>
-    </dxi-item>
-    <dxi-item class="info-devextreme">
-        <dxi-location
-            [row]="2"
-            [col]="0"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="3"
-            [col]="0"
-            screen="xs">
-        </dxi-location>
-        <div class="left-side text-space">
-            <div class="title">Getting Started Today</div>
-            <p>
-                DevExtreme Subscription includes Optimized HTML5 JavaScript SPA
-                Framework and 30+ High Performance HTML5 JavaScript Widgets.
-            </p>
-            <a target="_blank" href="http://js.devexpress.com/">Download your free 30-day trial</a>
-        </div>
-    </dxi-item>
-    <dxi-item class="info-devextreme">
-        <dxi-location
-            [row]="2"
-            [col]="1"
-            screen="lg md sm">
-        </dxi-location>
-        <dxi-location
-            [row]="4"
-            [col]="0"
-            screen="xs">
-        </dxi-location>
-        <div class="right-side text-space">
-            <p>The following DevExtreme Widgets were used on this page:</p>
-            <div class="widgets">
-                <div class="left-side text-space">
-                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/forms_and_multi-purpose-scheduler-overview">dxScheduler</a>
-                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/dialogs_and_notifications-popup-overview">dxPopup</a>
-                </div>
-                <div class="right-side text-space">
-                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/forms_and_multi-purpose-form-overview">dxForm</a>
-                    <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/#demo/forms_and_multi-purpose-responsive_box-overview">dxResponsiveBox</a>
+    </div>
+    <div class="info-devextreme">
+        <div>
+            <div class="left-side text-space">
+                <div class="title">Getting Started Today</div>
+                <p>
+                    DevExtreme Subscription includes Optimized HTML5 JavaScript SPA
+                    Framework and 30+ High Performance HTML5 JavaScript Widgets.
+                </p>
+                <a target="_blank" href="http://js.devexpress.com/">Download your free 30-day trial</a>
+            </div>
+            <div class="right-side text-space">
+                <p>The following DevExtreme Widgets were used on this page:</p>
+                <div class="widgets">
+                    <div class="left-side text-space">
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Scheduler/Overview/Angular/Light/">dxScheduler</a>
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Popup/Overview/Angular/Light/">dxPopup</a>
+                    </div>
+                    <div class="right-side text-space">
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Form/Overview/Angular/Light/">dxForm</a>
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Button/PredefinedTypes/Angular/Light/">dxButton</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </dxi-item>
-</dx-responsive-box>
+    </div>
+</div>

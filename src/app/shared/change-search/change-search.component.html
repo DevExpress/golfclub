@@ -15,9 +15,9 @@
     [(visible)]="changeSearchVisible"
     [position]="adaptOptions.position">
     <div [ngClass]="{'dx-responsivebox-screen-xs': !adaptOptions.largeScreen}" *dxTemplate="let item = data of 'searchTemplate'">
-        <search-panel class="search-container" 
-            [data]="params" 
-            [adaptOptions]="adaptOptions" 
+        <search-panel class="search-container"
+            [data]="params"
+            [adaptOptions]="adaptOptions"
             (onSearched)="hideSearch()">
         </search-panel>
     </div>

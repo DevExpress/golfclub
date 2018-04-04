@@ -25,10 +25,42 @@
     color: darkgray;
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
+@media screen and (min-width: 768px) {
+    .info-container {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+
+        .info-search {
+            flex-basis: 512px;
+            height: 109px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .info-container {
+        display: flex;
+        flex-direction: column;
+    }
     .result-search {
-        .dx-scheduler {
-            padding: 0 20px 30px 20px;
+
+            .dx-scheduler {
+                padding: 0 20px 30px 20px;
+            }
+
+    }
+
+    .info-search {
+        text-align: center;
+        height: auto;
+
+        .right-side {
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 7px;
+            margin-bottom: 20px;
         }
     }
 }

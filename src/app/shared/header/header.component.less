@@ -132,7 +132,7 @@ header {
     padding-top: 81px;
 }
 
-.dx-responsivebox-screen-lg {
+@media screen and (min-width: 768px) {
     header {
         .login-item {
             width: 354px;
@@ -140,7 +140,7 @@ header {
     }
 }
 
-::ng-deep.dx-responsivebox-screen-xs {
+@media screen and (max-width: 768px) {
     header {
         .logo-container {
             width: 73%;
@@ -220,7 +220,7 @@ header {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     ::ng-deep.dx-overlay-wrapper {
         &.popup {
             .dx-toolbar-label {

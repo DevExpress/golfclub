@@ -1,5 +1,6 @@
 ﻿import { Component, Input, Output, OnDestroy, EventEmitter } from "@angular/core";
 import { ClubsService } from "../../clubs.service";
+import { CommonService } from "../../common.service";
 import { Subscription } from "rxjs/Subscription";
 
 @Component({
@@ -8,14 +9,15 @@ import { Subscription } from "rxjs/Subscription";
     styleUrls: ["searching-info.component.less"]
 })
 export class SearchingInfoComponent implements OnDestroy{
-    @Input() searchingParams: any;
+    searchingParams: any;
     @Output() dataLoaded = new EventEmitter<boolean>();
     dataInfo: any;
     startDate: Date;
     infoVisible = false;
     subscription: Subscription;
     endDate: Date;
-    constructor(private clubsServise: ClubsService) {
+    constructor(private clubsServise: ClubsService, private commonService: CommonService) {
+        this.searchingParams = this.commonService.getParams();
         this.subscription = clubsServise.clubsData$.subscribe(items => {
             this.dataInfo = items[0];
             this.infoVisible = true;

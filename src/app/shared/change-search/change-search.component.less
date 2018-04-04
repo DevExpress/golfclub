@@ -54,8 +54,21 @@
             margin-top: 0;
         }
     }
+}
 
-    .dx-responsivebox-screen-xs {
+.change-search-btn {
+    margin-top: 5px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    ::ng-deep.dx-overlay-wrapper.change-search {
+        height: 100%;
+
+        .dx-popup-content {
+            padding: 0;
+        }
+
         .search-container {
             .search-panel {
                 margin: 0;
@@ -81,21 +94,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-.change-search-btn {
-    margin-top: 5px;
-    text-align: center;
-}
-
-@media screen and (max-width: 767px) {
-    ::ng-deep.dx-overlay-wrapper.change-search {
-        height: 100%;
-
-        .dx-popup-content {
-            padding: 0;
         }
 
         .dx-overlay-content {

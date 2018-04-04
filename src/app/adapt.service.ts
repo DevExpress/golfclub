@@ -1,9 +1,11 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { Injectable, Inject, HostListener } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
 import { Subject } from "rxjs/Subject";
-import devexpress  from "devextreme/core/devices"
 
 @Injectable()
 export class AdaptService {
+    constructor(@Inject(DOCUMENT) private _document: any,) {
+    }
     private adapt = new Subject<any>();
     adapt$ = this.adapt.asObservable();
     smallSize: any = {
@@ -35,15 +37,7 @@ export class AdaptService {
         }
     }
     setAdaptValue() {
-        let width = window.innerWidth;
-        devexpress.current({ platform: "generic" });
-        if (devexpress.real().generic) {
-            this.largeSize.pickerType = "calendar";
-            this.smallSize.pickerType = "calendar";
-        } else {
-            this.largeSize.pickerType = "rollers";
-            this.smallSize.pickerType = "rollers";
-        }
+        let width = this._document.documentElement.clientWidth;
         if (width < 768)
             this.adapt.next(true);
         else

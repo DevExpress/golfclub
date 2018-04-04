@@ -4,6 +4,7 @@ import { DatePipe } from "@angular/common";
 import { DxFormComponent } from "devextreme-angular/ui/form";
 import { CitiesService } from "../../cities.service";
 import { CommonService } from "../../common.service";
+import devexpress  from "devextreme/core/devices";
 
 const MAX_NUMBER_OF_DAYS_FOR_BOOKING = 7,
     MAX_NUMBER_OF_DAYS = 60,
@@ -27,6 +28,7 @@ export class SearchPanelComponent {
     numberOfHoles: number[] = [9, 18];
     minStartDate: Date = new Date();
     maxStartDate: Date;
+    pickerType: string;
     minEndDate: Date = new Date();
     maxEndDate: Date;
     constructor(private citiesService: CitiesService,
@@ -39,6 +41,13 @@ export class SearchPanelComponent {
             that.citiesList = data;
         });
         this.maxStartDate = this.commonService.addDays(new Date, MAX_NUMBER_OF_DAYS);
+
+        devexpress.current({ platform: "generic" });
+        if (devexpress.real().generic) {
+            this.pickerType = "calendar";
+        } else {
+            this.pickerType = "rollers";
+        }
     }
     fieldChanged(e: any) {
         if (e.dataField == "startDate") {
@@ -55,13 +64,6 @@ export class SearchPanelComponent {
                 this.data.holes = DEFAULT_COUNT_HOLES;
             }
         }
-    }
-    getScreen() {
-        let width = window.innerWidth;
-        if (width < 768)
-            return "xs";
-        else
-            return "lg";
     }
     searchClubs() {
         let data = this.data;

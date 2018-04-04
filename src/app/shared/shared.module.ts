@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { DxPopupModule,
-         DxFormModule, 
+         DxFormModule,
          DxTemplateModule,
          DxButtonModule,
          DxSchedulerModule,

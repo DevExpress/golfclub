@@ -1,60 +1,20 @@
 ﻿<div class="info-page page">
-    <dx-responsive-box class="responsive-info"
-        (onOptionChanged)="adaptation()"
-        singleColumnScreen="xs">
-
-        <dxi-row [baseSize]="109" screen="lg sm md"></dxi-row>
-        <dxi-row [baseSize]="945" screen="lg sm md"></dxi-row>
-        <dxi-row [ratio]="1"></dxi-row>
-        <dxi-row [ratio]="1"></dxi-row>
-
-        <dxi-col [ratio]="1"></dxi-col>
-        <dxi-col [ratio]="1"></dxi-col>
-
-        <dxi-item class="info-search">
-            <dxi-location
-                [row]="0"
-                [col]="0"
-                screen="lg md sm">
-            </dxi-location>
-            <dxi-location
-                [row]="0"
-                [col]="0"
-                screen="xs">
-            </dxi-location>
-            <full-address (dataLoaded)="repaint($event)"></full-address>
-        </dxi-item>
-        <dxi-item class="info-search">
-            <dxi-location
-                [row]="0"
-                [col]="1"
-                screen="lg md sm">
-            </dxi-location>
-            <dxi-location
-                [row]="1"
-                [col]="0"
-                screen="xs">
-            </dxi-location>
-            <div class="right-side">
-                <div class="details">{{searchingParams.startDate | date: 'EEE dd'}} - {{searchingParams.endDate | date: 'EE dd, MMMM yyyy'}}</div>
-                <change-search [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
+    <div class="responsive-info">
+        <div class="info-container">
+            <div class="info-search">
+                <full-address></full-address>
             </div>
-        </dxi-item>
-        <dxi-item class="result-search">
-            <dxi-location
-                [row]="1"
-                [col]="0"
-                [colspan]="2"
-                screen="lg md sm">
-            </dxi-location>
-            <dxi-location
-                [row]="1"
-                [col]="0"
-                screen="xs">
-            </dxi-location>
+            <div class="info-search">
+                <div class="right-side">
+                    <div class="details">{{searchingParams.startDate | date: 'EEE dd'}} - {{searchingParams.endDate | date: 'EE dd, MMMM yyyy'}}</div>
+                    <change-search [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
+                </div>
+            </div>
+        </div>
+        <div class="result-search">
             <descroption [adaptOptions]="adaptOptions"></descroption>
-        </dxi-item>
-    </dx-responsive-box>
+        </div>
+    </div>
     <dx-load-panel message="Loading..."
         [shading]="true"
         [showPane]="false"

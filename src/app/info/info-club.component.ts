@@ -1,9 +1,8 @@
-﻿import { Component, ViewChild } from "@angular/core";
+﻿import { Component, OnInit, HostListener } from "@angular/core";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
 import { AdaptService } from "../adapt.service";
-import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
 
 @Component({
     selector: "info",
@@ -15,12 +14,14 @@ import { DxResponsiveBoxComponent } from "devextreme-angular/ui/responsive-box";
         DatePipe
     ]
 })
-export class InfoComponent {
-    @ViewChild(DxResponsiveBoxComponent) responsiveBox: DxResponsiveBoxComponent;
+export class InfoComponent implements OnInit {
     searchingParams: any;
     club: any;
     loadingData = true;
     adaptOptions: any;
+    @HostListener("window:resize") onWindowResize() {
+        this.adapt.setAdaptValue();
+    }
     constructor(private clubsService: ClubsService,
         private commonService: CommonService,
         private adapt: AdaptService) {
@@ -29,21 +30,14 @@ export class InfoComponent {
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
-        clubsService.getClubById(that.searchingParams.clubId).done(function (data: any) {
-            that.club = data;
-            that.clubsService.setClubsData([data]);
-            that.loadingData = false;
-        });
-    }
-    repaint (e: any) {
-       if(e) {
-           this.responsiveBox.instance.repaint();
-       }
-    }
-    adaptation() {
         this.adapt.setAdaptValue();
     }
+
     ngOnInit() {
-        this.adaptation();
+        this.clubsService.getClubById(this.searchingParams.clubId).done((data: any) => {
+            this.club = data;
+            this.clubsService.setClubsData([data]);
+            this.loadingData = false;
+        });
     }
 }

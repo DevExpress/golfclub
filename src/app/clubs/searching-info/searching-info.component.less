@@ -13,26 +13,14 @@
     color: darkgray;
 }
 
-::ng-deep .dx-responsivebox-screen-xs {
-    .info-search {
+ @media screen and (max-width: 768px) {
+    .info {
+        margin: 0 auto;
         text-align: center;
-        height: auto;
+        margin-top: 20px;
 
-        .right-side {
-            margin: 0 auto;
-            text-align: center;
-            margin-top: 7px;
-            margin-bottom: 20px;
-        }
-
-        .info {
-            margin: 0 auto;
-            text-align: center;
-            margin-top: 20px;
-
-            .name {
-                font-size: 25px;
-            }
+        .name {
+            font-size: 25px;
         }
     }
 }

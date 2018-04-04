@@ -1,37 +1,12 @@
-<dx-responsive-box
-    height="auto"
-    (onOptionChanged)="adaptation()"
-    [(screenByWidth)]="getScreen">
 
-    <dxi-row [ratio]="1"></dxi-row>
-    <dxi-row [ratio]="1"></dxi-row>
-    <dxi-row [ratio]="1"></dxi-row>
-
-    <dxi-item>
-        <dxi-location
-            [row]="0"
-            [col]="0"
-            [colspan]="1"
-            screen="lg md sm xs">
-        </dxi-location>
+<div class="golf-app">
+    <div>
         <header-app [adaptOptions]="adaptOptions"></header-app>
-    </dxi-item>
-    <dxi-item id="page">
-        <dxi-location
-            [row]="1"
-            [col]="0"
-            [colspan]="1"
-            screen="lg md sm xs">
-        </dxi-location>
+    </div>
+    <div id="page">
         <router-outlet></router-outlet>
-    </dxi-item>
-    <dxi-item>
-        <dxi-location
-            [row]="2"
-            [col]="0"
-            [colspan]="1"
-            screen="lg md sm xs">
-        </dxi-location>
+    </div>
+    <div>
         <footer-app></footer-app>
-    </dxi-item>
-</dx-responsive-box>
+    </div>
+</div>

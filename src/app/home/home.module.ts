@@ -1,6 +1,5 @@
 ﻿import { NgModule } from "@angular/core";
 import { DxButtonModule,
-         DxResponsiveBoxModule,
          DxLoadPanelModule,
          DxTemplateModule } from "devextreme-angular";
 import { CommonModule } from "@angular/common";
@@ -15,7 +14,6 @@ import { ClubsComponent } from "./clubs-list/clubs-list.component";
     imports: [
         CommonModule,
         SharedModule,
-        DxResponsiveBoxModule,
         DxTemplateModule,
         DxLoadPanelModule,
         DxButtonModule
