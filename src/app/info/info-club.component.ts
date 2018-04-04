@@ -31,6 +31,7 @@ export class InfoComponent implements OnInit {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
         this.adapt.setAdaptValue();
+        this.adapt.setPickerType();
     }
 
     ngOnInit() {

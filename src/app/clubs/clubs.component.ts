@@ -1,5 +1,4 @@
-﻿import { Component, OnInit, Inject } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+﻿import { Component, OnInit, HostListener } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
@@ -22,16 +21,19 @@ export class ClubsComponent implements OnInit {
     loadingData = true;
     navigate: any;
     adaptOptions: any;
+    @HostListener("window:resize") onWindowResize() {
+        this.adapt.setAdaptValue();
+    }
     constructor(private route: ActivatedRoute,
         private clubsService: ClubsService,
         private commonService: CommonService,
         private router: Router,
-        private adapt: AdaptService,
-        @Inject(DOCUMENT) _document: any) {
+        private adapt: AdaptService) {
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
-        this.adapt.setAdaptValue(_document.documentElement.clientWidth);
+        this.adapt.setAdaptValue();
+        this.adapt.setPickerType();
     }
     ngOnInit() {
         let that = this;

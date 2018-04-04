@@ -1,5 +1,4 @@
-﻿import { Component, Inject } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+﻿import { Component, HostListener } from "@angular/core";
 import { AdaptService } from "../adapt.service";
 
 @Component({
@@ -17,10 +16,14 @@ export class HomeComponent {
         players: null
     };
     adaptOptions: any;
-    constructor(private adapt: AdaptService, @Inject(DOCUMENT) _document: any) {
+    @HostListener("window:resize") onWindowResize() {
+        this.adapt.setAdaptValue();
+    }
+    constructor(private adapt: AdaptService) {
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
-        this.adapt.setAdaptValue(_document.documentElement.clientWidth);
+        this.adapt.setAdaptValue();
+        this.adapt.setPickerType();
     }
 }

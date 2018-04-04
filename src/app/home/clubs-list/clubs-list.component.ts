@@ -1,4 +1,4 @@
-﻿import { Component, AfterViewInit } from "@angular/core";
+﻿import { Component } from "@angular/core";
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { ClubsService } from "../../clubs.service";
 import { Router } from "@angular/router";
@@ -18,8 +18,8 @@ const IS_SSR = makeStateKey<any>('isServerSideRendering');
         DatePipe
     ]
 })
-export class ClubsComponent implements AfterViewInit {
-    loadingData: boolean;
+export class ClubsComponent {
+    loadingData: boolean = true;
     clubs: any[];
     constructor(private clubsService: ClubsService,
         private transferState: TransferState,
@@ -35,11 +35,6 @@ export class ClubsComponent implements AfterViewInit {
     keyPress(e: any, club: any){
         if(e.code == "Enter") {
             this.goToInfo(club);
-        }
-    }
-    ngAfterViewInit() {
-        if(!this.transferState.hasKey(IS_SSR)) {
-            this.loadingData = true;
         }
     }
     goToInfo(e: any) {

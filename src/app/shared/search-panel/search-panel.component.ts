@@ -56,13 +56,6 @@ export class SearchPanelComponent {
             }
         }
     }
-    getScreen() {
-        let width = 1000;//window.innerWidth;
-        if (width < 768)
-            return "xs";
-        else
-            return "lg";
-    }
     searchClubs() {
         let data = this.data;
         data.endDate = this.commonService.getFormatDate(this.data.endDate);
