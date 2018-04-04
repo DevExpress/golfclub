@@ -32,7 +32,6 @@ export class ScheduleComponent implements OnDestroy {
         });
         this.reservationSubscription = this.clubsServise.reservations$.subscribe(reserv => {
             this.schedulerData = reserv;
-            this.scheduler.instance.repaint();
         });
     }
     openBook(e: any) {

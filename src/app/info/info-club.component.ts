@@ -1,5 +1,4 @@
-﻿import { Component, Inject } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+﻿import { Component, OnInit, HostListener } from "@angular/core";
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../common.service";
 import { ClubsService } from "../clubs.service";
@@ -15,25 +14,30 @@ import { AdaptService } from "../adapt.service";
         DatePipe
     ]
 })
-export class InfoComponent {
+export class InfoComponent implements OnInit {
     searchingParams: any;
     club: any;
     loadingData = true;
     adaptOptions: any;
+    @HostListener("window:resize") onWindowResize() {
+        this.adapt.setAdaptValue();
+    }
     constructor(private clubsService: ClubsService,
         private commonService: CommonService,
-        private adapt: AdaptService,
-        @Inject(DOCUMENT) _document: any) {
+        private adapt: AdaptService) {
         let that = this;
         this.searchingParams = commonService.getParams();
         this.adapt.adapt$.subscribe(item => {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
-        this.adapt.setAdaptValue(_document.documentElement.clientWidth);
-        clubsService.getClubById(that.searchingParams.clubId).done(function (data: any) {
-            that.club = data;
-            that.clubsService.setClubsData([data]);
-            that.loadingData = false;
+        this.adapt.setAdaptValue();
+    }
+
+    ngOnInit() {
+        this.clubsService.getClubById(this.searchingParams.clubId).done((data: any) => {
+            this.club = data;
+            this.clubsService.setClubsData([data]);
+            this.loadingData = false;
         });
     }
 }
