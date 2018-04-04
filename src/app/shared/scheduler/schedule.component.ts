@@ -1,34 +1,29 @@
-﻿import { Component, Input, Output, EventEmitter, ViewChild, OnDestroy, ViewEncapsulation, Inject, PLATFORM_ID } from "@angular/core";
-import { isPlatformServer } from '@angular/common';
+﻿import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, ViewEncapsulation } from "@angular/core";
 import { ClubsService } from "../../clubs.service";
 import { Subscription } from "rxjs/Subscription";
-import { DxSchedulerComponent } from "devextreme-angular/ui/scheduler";
 
 @Component({
     selector: "schedule",
     templateUrl: "schedule.component.html",
     styleUrls: ["schedule.component.less"]
 })
-export class ScheduleComponent implements OnDestroy {
-    @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
+export class ScheduleComponent implements OnDestroy, OnInit {
     @Input() searchingParams: any;
     @Input() adaptOptions: any;
     @Output() editBook = new EventEmitter<any>();
+
+    groups: any[];
+    groupsHasValue = false;
     data: any[] = [];
-    schedulerData: any;
-    schedulerResources: any;
-    groups: any[] = [];
+    schedulerData: any = [];
+    schedulerResources: any = [];
     subscription: Subscription;
     reservationSubscription: Subscription;
     currentDate: Date;
-    constructor(private clubsServise: ClubsService, @Inject(PLATFORM_ID) platformId: any) {
+    constructor(private clubsServise: ClubsService) {
         this.subscription = clubsServise.clubsData$.subscribe(items => {
             this.data = items;
             this.schedulerResources = this.clubsServise.getResources(this.data);
-            if (this.data.length === 1 || isPlatformServer(platformId))
-                this.groups = [];
-            else
-                this.groups = ["Id"];
         });
         this.reservationSubscription = this.clubsServise.reservations$.subscribe(reserv => {
             this.schedulerData = reserv;
@@ -40,12 +35,28 @@ export class ScheduleComponent implements OnDestroy {
             this.editBook.emit(e.appointmentData);
         }
     }
+    optionChanged(e: any) {
+        if(e.name === "resources") {
+            this.setGroupValue();
+            this.groupsHasValue = true;
+        }
+    }
+    setGroupValue() {
+        if (this.data.length === 1) {
+            this.groups = [];
+        } else {
+            this.groups = ["Id"];
+        }
+    }
     ngOnDestroy() {
         this.data = [];
         this.subscription.unsubscribe();
         this.reservationSubscription.unsubscribe();
     }
     ngOnInit() {
+        if(!this.groupsHasValue) {
+            this.setGroupValue();
+        }
         this.currentDate = new Date(this.searchingParams.startDate);
     }
 }
