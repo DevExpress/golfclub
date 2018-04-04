@@ -1,7 +1,6 @@
 ﻿import { Injectable, Inject, HostListener } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { Subject } from "rxjs/Subject";
-import devexpress  from "devextreme/core/devices"
 
 @Injectable()
 export class AdaptService {
@@ -35,16 +34,6 @@ export class AdaptService {
         position: {
             offset: "-116 195",
             of: ".change-search-btn"
-        }
-    }
-    setPickerType() {
-        devexpress.current({ platform: "generic" });
-        if (devexpress.real().generic) {
-            this.largeSize.pickerType = "calendar";
-            this.smallSize.pickerType = "calendar";
-        } else {
-            this.largeSize.pickerType = "rollers";
-            this.smallSize.pickerType = "rollers";
         }
     }
     setAdaptValue() {

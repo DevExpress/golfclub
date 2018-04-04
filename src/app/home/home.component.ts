@@ -24,6 +24,5 @@ export class HomeComponent {
             this.adaptOptions = this.adapt.getOptionsForAdaptation(item);
         });
         this.adapt.setAdaptValue();
-        this.adapt.setPickerType();
     }
 }
