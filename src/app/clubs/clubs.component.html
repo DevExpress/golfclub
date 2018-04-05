@@ -7,14 +7,7 @@
             <change-search class="right-side" [params]="searchingParams" [adaptOptions]="adaptOptions"></change-search>
         </div>
     </div>
-        <div class="result-search">
-            <club-list [adaptOptions]="adaptOptions"></club-list>
-        </div>
-    <dx-load-panel message="Loading..."
-        [shading]="true"
-        [showPane]="false"
-        shadingColor="#f6f9f5"
-        [position]="{ of: '#page'}"
-        [visible]="loadingData">
-    </dx-load-panel>
+    <div class="result-search">
+        <club-list [adaptOptions]="adaptOptions"></club-list>
+    </div>
 </div>

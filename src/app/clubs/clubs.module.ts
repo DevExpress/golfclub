@@ -2,6 +2,7 @@
 import { CommonModule } from "@angular/common";
 import { DxButtonModule,
          DxLoadPanelModule,
+         DxLoadIndicatorModule,
          DxTemplateModule } from "devextreme-angular";
 
 import { SharedModule } from "../shared/shared.module";
@@ -14,6 +15,7 @@ import { ClubsListComponent } from "./clubs-list/club-list.component"
         SharedModule,
         CommonModule,
         DxTemplateModule,
+        DxLoadIndicatorModule,
         DxLoadPanelModule,
         DxButtonModule
     ],

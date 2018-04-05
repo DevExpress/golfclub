@@ -1,32 +1,51 @@
 ﻿<div class="full-description info">
-    <div *ngIf="descriptionVisible">
-        <div  class="img">
-            <div [ngStyle]="{'background-image':'url(' + club[0].Image + ')'}"></div>
+    <div>
+        <div class="img">
+            <dx-load-panel
+                [position]="{ of: '.img' }"
+                [visible]="!descriptionVisible"
+                [showIndicator]="true"
+                [showPane]="false"
+                [closeOnOutsideClick]="false">
+            </dx-load-panel>
+            <div *ngIf="descriptionVisible" [ngStyle]="{'background-image':'url(' + club[0].Image + ')'}"></div>
         </div>
         <div class="description">
             <div class="details">
                 <div class="label">Hole regulation length course:</div>
-                <div class="value">{{club[0].HoleCount}}</div>
+                <div *ngIf="descriptionVisible" class="value">{{club[0].HoleCount}}</div>
             </div>
             <div class="details">
                 <div class="label">Golf course(s):</div>
-                <div class="value">{{club[0].GolfCourseCount}}</div>
+                <div *ngIf="descriptionVisible" class="value">{{club[0].GolfCourseCount}}</div>
             </div>
             <div class="details">
                 <div class="label">Cost per player:</div>
-                <div class="value">{{club[0].Price | currency:'USD':'symbol':'1.0'}}</div>
+                <div *ngIf="descriptionVisible" class="value">{{club[0].Price | currency:'USD':'symbol':'1.0'}}</div>
             </div>
             <div class="details">
                 <div class="label">Rating:</div>
                 <div class="value">
-                    <div class="rating" [ngStyle]="{ 'width' : '20 *' + club[0].Rating + '%'}">
+                    <div *ngIf="descriptionVisible" class="rating" [ngStyle]="{ 'width' : '20 *' + club[0].Rating + '%'}">
                     </div>
                 </div>
             </div>
-            <dx-button *ngIf="club" class="button white-text"
+            <dx-button class="button white-text"
                 [height]="41"
                 (onClick)="popupBook(club[0])"
-                [text]="'Book ' + club[0].Name"></dx-button>
+                [template]="buttonTemplate">
+                <div *dxTemplate="let buttonData of 'buttonTemplate'">
+                    <span class="button-template">{{'Book ' + club[0].Name}}</span>
+                </div>
+                <div *dxTemplate="let buttonData of 'buttonLoadingTemplate'">
+                    <dx-load-indicator
+                        [height]="20"
+                        [width]="20"
+                        [visible]="!descriptionVisible">
+                    </dx-load-indicator>
+                    <span class="button-template dx-button-text loading-text">  Loading...</span>
+                </div>
+            </dx-button>
         </div>
      </div>
     <book [data]="bookData" [adaptOptions]="adaptOptions"></book>

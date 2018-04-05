@@ -16,6 +16,7 @@ export class ClubsListComponent {
     @ViewChild(BookComponent) book: BookComponent;
     @Input() adaptOptions: any;
     clubsData: any[] = [];
+    dataLoaded = false;
     searchingParams: any;
     bookData: any;
     clubsSubscription: Subscription;
@@ -24,6 +25,7 @@ export class ClubsListComponent {
         this.searchingParams = commonService.getParams();
         this.clubsSubscription = this.clubsService.clubsData$.subscribe(items => {
             this.clubsData = items;
+            this.dataLoaded = true;
             this.setDataForService(this.clubsData);
         });
         this.clubsService.reservations$.subscribe(reserv => {
