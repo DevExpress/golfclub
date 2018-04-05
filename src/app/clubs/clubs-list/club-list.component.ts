@@ -16,7 +16,7 @@ export class ClubsListComponent {
     @ViewChild(BookComponent) book: BookComponent;
     @Input() adaptOptions: any;
     clubsData: any[] = [];
-    dataLoaded: boolean = false;
+    dataLoaded = false;
     searchingParams: any;
     bookData: any;
     clubsSubscription: Subscription;
