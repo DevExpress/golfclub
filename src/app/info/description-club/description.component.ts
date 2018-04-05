@@ -18,7 +18,7 @@ export class DescroptionComponent implements OnDestroy {
     club: any[] = [];
     bookData: any;
     searchingParams: any;
-    buttonTemplate: string = "buttonLoadingTemplate"
+    buttonTemplate = "buttonLoadingTemplate"
     descriptionVisible = false;
     clubsDataSubscription: Subscription;
     reservationSubscription: Subscription;
