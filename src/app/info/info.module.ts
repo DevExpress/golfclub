@@ -1,6 +1,7 @@
 ﻿import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DxButtonModule,
+         DxLoadIndicatorModule,
          DxLoadPanelModule,
          DxTemplateModule } from "devextreme-angular";
 
@@ -15,6 +16,7 @@ import { InfoComponent } from "./info-club.component";
         CommonModule,
         DxTemplateModule,
         DxLoadPanelModule,
+        DxLoadIndicatorModule,
         DxButtonModule
     ],
     declarations: [

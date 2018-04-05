@@ -1,4 +1,4 @@
-﻿<div *ngIf="clubsData" class="clubs" [ngClass]="{'big-padding': clubsData.length == 2}">
+﻿<div class="clubs" [ngClass]="{'big-padding': clubsData.length == 2}">
     <div class="club" *ngFor="let club of clubsData">
         <div class="image" [ngStyle]="{'background-image':'url(' + club.Image + ')'}" (click)="goToInfo(club)"></div>
         <div class="info">
@@ -11,6 +11,15 @@
                 [text]="'Book ' + club.Name">
             </dx-button>
         </div>
+    </div>
+    <div class="load-container" *ngIf="!dataLoaded">
+        <dx-load-panel
+            [position]="{ of: '.clubs' }"
+            [visible]="!dataLoaded"
+            [showIndicator]="true"
+            [showPane]="false"
+            [closeOnOutsideClick]="false">
+        </dx-load-panel>
     </div>
 </div>
 <book [data]="bookData" [adaptOptions]="adaptOptions"></book>

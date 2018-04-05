@@ -17,5 +17,12 @@
             (onClick)="goToInfo(offer)"
             text="More info">
         </dx-button>
+        <dx-load-panel
+            [position]="{ of: '.bottom-side' }"
+            [visible]="!offer"
+            [showIndicator]="true"
+            [showPane]="false"
+            [closeOnOutsideClick]="false">
+        </dx-load-panel>
     </div>
 </div>

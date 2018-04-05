@@ -1,5 +1,16 @@
-﻿<div class="info" *ngIf="dataInfo">
-    <div class="name">{{dataInfo[0].Name}}</div>
-    <div class="details">{{dataInfo[0].Address}}</div>
-    <div class="details">{{dataInfo[0].City.Name}}, {{dataInfo[0].City.StateProvince}} {{dataInfo[0].PostalCode}}</div>
+﻿
+<div class="info">
+    <div class="load-panel" *ngIf="!dataInfo">
+        <dx-load-indicator class='button-indicator'
+            height="20"
+            width="20"
+            [visible]="!dataInfo">
+        </dx-load-indicator>
+        <span class="button-template dx-button-text loading-text">  Loading...</span>
+    </div>
+    <div *ngIf="dataInfo">
+        <div class="name">{{dataInfo[0].Name}}</div>
+        <div class="details">{{dataInfo[0].Address}}</div>
+        <div class="details">{{dataInfo[0].City.Name}}, {{dataInfo[0].City.StateProvince}} {{dataInfo[0].PostalCode}}</div>
+    </div>
 </div>

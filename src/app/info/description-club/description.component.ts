@@ -18,6 +18,7 @@ export class DescroptionComponent implements OnDestroy {
     club: any[] = [];
     bookData: any;
     searchingParams: any;
+    buttonTemplate: string = "buttonLoadingTemplate"
     descriptionVisible = false;
     clubsDataSubscription: Subscription;
     reservationSubscription: Subscription;
@@ -31,6 +32,7 @@ export class DescroptionComponent implements OnDestroy {
                 this.club.push(value);
             }
             this.descriptionVisible = true;
+            this.buttonTemplate = "buttonTemplate"
             this.setDataForService(this.club);
         });
         this.reservationSubscription = this.clubsService.reservations$.subscribe(reserv => {

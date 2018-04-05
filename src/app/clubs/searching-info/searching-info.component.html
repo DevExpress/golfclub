@@ -1,5 +1,15 @@
-﻿<div class="info" *ngIf="infoVisible">
-    <div class="address name">{{dataInfo.City.Name}}, {{dataInfo.City.StateProvince}}, {{dataInfo.City.Country}}</div>
-    <div class="details">{{startDate | date: 'EEE dd'}} - {{endDate | date: 'EE dd, MMMM yyyy'}}</div>
-    <div class="details">{{searchingParams.players}} players, {{searchingParams.holes}} holes</div>
+﻿<div class="info">
+    <div class="load-panel" *ngIf="!infoVisible">
+        <dx-load-indicator class='button-indicator'
+            height="20"
+            width="20"
+            [visible]="!infoVisible">
+        </dx-load-indicator>
+        <span class="button-template dx-button-text loading-text">  Loading...</span>
+    </div>
+    <div *ngIf="infoVisible">
+        <div class="address name">{{dataInfo.City.Name}}, {{dataInfo.City.StateProvince}}, {{dataInfo.City.Country}}</div>
+        <div class="details">{{startDate | date: 'EEE dd'}} - {{endDate | date: 'EE dd, MMMM yyyy'}}</div>
+        <div class="details">{{searchingParams.players}} players, {{searchingParams.holes}} holes</div>
+    </div>
 </div>
