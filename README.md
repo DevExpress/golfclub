@@ -18,4 +18,4 @@ Run `npm start` or `ng serve` to start a dev server. Navigate to `http://localho
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Server Side Rendering
-Run `npm run build:universal` to build the project. The build artifacts will be stored in the `dist/`directory. Run `npm run serve:universal` to start the application. Navigate to `http://localhost:4000/`.
+Run `npm run build:ssr` to build the project. The build artifacts will be stored in the `dist/`directory. Run `npm run serve:ssr` to start the application. Navigate to `http://localhost:4000/`.
