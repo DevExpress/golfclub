@@ -39,8 +39,8 @@
                 </div>
                 <div *dxTemplate="let buttonData of 'buttonLoadingTemplate'">
                     <dx-load-indicator class='button-indicator'
-                        height="20"
-                        width="20"
+                        [height]="20"
+                        [width]="20"
                         [visible]="!descriptionVisible">
                     </dx-load-indicator>
                     <span class="button-template dx-button-text loading-text">  Loading...</span>

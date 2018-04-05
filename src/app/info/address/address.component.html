@@ -2,8 +2,8 @@
 <div class="info">
     <div class="load-panel" *ngIf="!dataInfo">
         <dx-load-indicator class='button-indicator'
-            height="20"
-            width="20"
+            [height]="20"
+            [width]="20"
             [visible]="!dataInfo">
         </dx-load-indicator>
         <span class="button-template dx-button-text loading-text">  Loading...</span>
