@@ -1,7 +1,7 @@
 import { NgModule, enableProdMode } from "@angular/core";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { BrowserModule, BrowserTransferStateModule } from "@angular/platform-browser";
-import { DxTemplateModule } from "devextreme-angular";
+import { DxTemplateModule, DxServerTransferStateModule } from "devextreme-angular";
 import { AppComponent } from "./app.component";
 
 import { ClubsService } from "./clubs.service";
@@ -19,6 +19,7 @@ enableProdMode();
     imports: [
         BrowserModule.withServerTransition({ appId: 'golfclub' }),
         DxTemplateModule,
+        DxServerTransferStateModule,
         SharedModule,
         BrowserTransferStateModule,
         HomeModule,
