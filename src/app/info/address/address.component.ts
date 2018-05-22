@@ -1,6 +1,6 @@
 ﻿import { Component, OnDestroy, Output, EventEmitter } from "@angular/core";
 import { ClubsService } from "../../clubs.service";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "full-address",

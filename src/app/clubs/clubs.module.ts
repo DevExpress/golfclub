@@ -7,8 +7,8 @@ import { DxButtonModule,
 
 import { SharedModule } from "../shared/shared.module";
 import { ClubsComponent } from "./clubs.component";
-import { SearchingInfoComponent } from "./searching-info/searching-info.component"
-import { ClubsListComponent } from "./clubs-list/club-list.component"
+import { SearchingInfoComponent } from "./searching-info/searching-info.component";
+import { ClubsListComponent } from "./clubs-list/club-list.component";
 
 @NgModule({
     imports: [

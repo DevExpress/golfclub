@@ -1,5 +1,5 @@
-﻿import { Injectable } from "@angular/core"
-import { Subject } from "rxjs/Subject";
+﻿import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import odata from "devextreme/data/odata/store";
 
 @Injectable()
@@ -18,7 +18,7 @@ export class ClubsService {
         let reservations: any[] = [];
         data.forEach(function (club: any) {
             club.Reservations.forEach(function (item: any) {
-                var date = new Date(currentDate);
+                var date = new Date(currentDate.toString());
                 reservations.push({
                     Id: item.ClubId,
                     Name: club.Name,

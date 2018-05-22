@@ -2,7 +2,7 @@
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../../common.service";
 import { ClubsService } from "../../clubs.service";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 import { BookComponent } from "../../shared/book/book.component";
 
 @Component({
@@ -18,7 +18,7 @@ export class DescroptionComponent implements OnDestroy {
     club: any[] = [];
     bookData: any;
     searchingParams: any;
-    buttonTemplate = "buttonLoadingTemplate"
+    buttonTemplate = "buttonLoadingTemplate";
     descriptionVisible = false;
     clubsDataSubscription: Subscription;
     reservationSubscription: Subscription;
@@ -32,7 +32,7 @@ export class DescroptionComponent implements OnDestroy {
                 this.club.push(value);
             }
             this.descriptionVisible = true;
-            this.buttonTemplate = "buttonTemplate"
+            this.buttonTemplate = "buttonTemplate";
             this.setDataForService(this.club);
         });
         this.reservationSubscription = this.clubsService.reservations$.subscribe(reserv => {
@@ -53,6 +53,6 @@ export class DescroptionComponent implements OnDestroy {
     ngOnDestroy() {
         this.clubsDataSubscription.unsubscribe();
         this.reservationSubscription.unsubscribe();
-        this.club = []
+        this.club = [];
     }
 }

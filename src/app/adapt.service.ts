@@ -1,6 +1,6 @@
 ﻿import { Injectable, Inject, HostListener } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
-import { Subject } from "rxjs/Subject";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class AdaptService {
@@ -21,7 +21,7 @@ export class AdaptService {
             offset: "0 0",
             of: ""
         }
-    }
+    };
     largeSize: any = {
         largeScreen: true,
         showTitle: true,
@@ -35,13 +35,14 @@ export class AdaptService {
             offset: "-116 195",
             of: ".change-search-btn"
         }
-    }
+    };
     setAdaptValue() {
         let width = this._document.documentElement.clientWidth;
-        if (width < 768)
+        if (width < 768) {
             this.adapt.next(true);
-        else
+        } else {
             this.adapt.next(false);
+        }
     }
     getOptionsForAdaptation(value: boolean) {
         if (value) {

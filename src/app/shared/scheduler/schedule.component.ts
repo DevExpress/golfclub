@@ -1,6 +1,6 @@
 ﻿import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, ViewEncapsulation } from "@angular/core";
 import { ClubsService } from "../../clubs.service";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "schedule",

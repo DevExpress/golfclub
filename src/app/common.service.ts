@@ -7,12 +7,12 @@ export class CommonService {
     constructor(private datePipe: DatePipe, private route: ActivatedRoute) {
     }
     addDays(date: Date, days: number) {
-        let result = new Date(date);
+        let result = new Date(date.toString());
         result.setDate(result.getDate() + days);
         return result;
-    };
+    }
     addTime(value: Date, time: number) {
-        var date = new Date(value);
+        var date = new Date(value.toString());
         return new Date(date.setHours(date.getHours() + time));
     }
     getFormatDate(value: Date) {

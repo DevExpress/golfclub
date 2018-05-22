@@ -28,11 +28,11 @@ export class BookComponent {
     constructor(private commonService: CommonService, private clubsService: ClubsService) {
         this.clubsService.reservations$.subscribe(reserv => {
             this.reservations = reserv;
-        })
+        });
         this.params = commonService.getParams();
     }
     dateChanged(e: any) {
-        if (e.dataField == "startDate") {
+        if (e.dataField === "startDate") {
             this.bookData.endDate = this.commonService.addTime(e.value, MAX_TIME_GAME);
             this.bookData.startDate = e.value;
         }
@@ -62,14 +62,14 @@ export class BookComponent {
         } else {
             return true;
         }
-    };
+    }
     validateBook() {
         let that = this;
         if (this.data.isNew) {
             this.reservations.splice(this.reservations.indexOf(this.data), 1);
         }
         return this.reservations.some(function (item) {
-            if (item.Id == that.data.Id) {
+            if (item.Id === that.data.Id) {
                 return (((item.startDate <= that.bookData.startDate) && (that.bookData.startDate < item.endDate))
                     || ((that.bookData.endDate > item.startDate) && (that.bookData.endDate <= item.endDate)));
             } else {
