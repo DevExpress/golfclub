@@ -1,14 +1,14 @@
 ﻿import { Component, Input, Output, OnDestroy, EventEmitter } from "@angular/core";
 import { ClubsService } from "../../clubs.service";
 import { CommonService } from "../../common.service";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "searching-info",
     templateUrl: "searching-info.component.html",
     styleUrls: ["searching-info.component.less"]
 })
-export class SearchingInfoComponent implements OnDestroy{
+export class SearchingInfoComponent implements OnDestroy {
     searchingParams: any;
     @Output() dataLoaded = new EventEmitter<boolean>();
     dataInfo: any;

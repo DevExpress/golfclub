@@ -2,7 +2,7 @@
 import { ClubsService } from "../../clubs.service";
 import { BookComponent } from "../../shared/book/book.component";
 import { Router } from "@angular/router";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 import { CommonService } from "../../common.service";
 
 const COUNT_DAYS = 1;
@@ -33,7 +33,7 @@ export class ClubsListComponent {
                 init = true;
                 this.clubsService.setReservation(reserv);
             }
-        })
+        });
     }
     setDataForService(value: any) {
         let date = new Date(this.searchingParams.startDate);

@@ -29,8 +29,8 @@ export class ClubsComponent {
             that.loadingData = false;
         });
     }
-    keyPress(e: any, club: any){
-        if(e.code == "Enter") {
+    keyPress(e: any, club: any) {
+        if(e.code === "Enter") {
             this.goToInfo(club);
         }
     }

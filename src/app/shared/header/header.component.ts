@@ -1,6 +1,6 @@
 import { Component, ViewChild, Input, PLATFORM_ID, Inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { CommonService } from "../../common.service"
+import { CommonService } from "../../common.service";
 import { DatePipe, isPlatformBrowser } from "@angular/common";
 import { DxFormComponent } from "devextreme-angular/ui/form";
 
@@ -38,7 +38,7 @@ export class HeaderComponent {
         if (valid.isValid) {
             this.common.setCookie(USER_NAME_KEY, form.option("formData").loginValue);
             this.loginVisible = !this.loginVisible;
-            this.authorizationCheck()
+            this.authorizationCheck();
         }
     }
     authorizationCheck() {
@@ -48,7 +48,7 @@ export class HeaderComponent {
     logOut() {
         this.common.deleteCookie(USER_NAME_KEY);
         this.loginVisible = !this.loginVisible;
-        this.authorizationCheck()
+        this.authorizationCheck();
     }
     setTemplate(value: string) {
         if (value) {

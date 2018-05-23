@@ -1,5 +1,4 @@
-﻿
-import { Component, Output, EventEmitter } from "@angular/core";
+﻿import { Component, Output, EventEmitter } from "@angular/core";
 import { OfferService } from "../../offer.service";
 import { Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
@@ -19,7 +18,7 @@ const COUNT_DAYS = 1;
 })
 export class BannerComponent {
     offer: any[];
-    @Output() dataLoaded = new EventEmitter<boolean>();;
+    @Output() dataLoaded = new EventEmitter<boolean>();
     name: string;
     constructor(private offerService: OfferService,
         private common: CommonService,

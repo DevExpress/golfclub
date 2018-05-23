@@ -50,11 +50,13 @@ export class SearchPanelComponent {
         }
     }
     fieldChanged(e: any) {
-        if (e.dataField == "startDate") {
+        if (e.dataField === "startDate") {
             let value = e.value;
             this.minEndDate = value;
             this.maxEndDate = this.commonService.addDays(value, MAX_NUMBER_OF_DAYS_FOR_BOOKING);
-            if ((!this.data.endDate) || (this.data.endDate <= this.data.startDate) || (this.data.endDate > this.commonService.addDays(value, MAX_NUMBER_OF_DAYS_FOR_BOOKING))) {
+            if ((!this.data.endDate) ||
+                (this.data.endDate <= this.data.startDate) ||
+                (this.data.endDate > this.commonService.addDays(value, MAX_NUMBER_OF_DAYS_FOR_BOOKING))) {
                 this.data.endDate = this.maxEndDate;
             }
             if (!this.data.players) {
@@ -69,8 +71,9 @@ export class SearchPanelComponent {
         let data = this.data;
         data.endDate = this.commonService.getFormatDate(this.data.endDate);
         data.startDate = this.commonService.getFormatDate(this.data.startDate);
-        if (!data.clubId)
+        if (!data.clubId) {
            delete data.clubId;
+        }
         let result: any = this.form.instance.validate();
         if (result.isValid) {
             this.onSearched.emit(false);
