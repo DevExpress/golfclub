@@ -13,7 +13,7 @@ const COUNT_DAYS = 1;
     styleUrls: ["club-list.component.less"]
 })
 export class ClubsListComponent {
-    @ViewChild(BookComponent) book: BookComponent;
+    @ViewChild(BookComponent, {static: false}) book: BookComponent;
     @Input() adaptOptions: any;
     clubsData: any[] = [];
     dataLoaded = false;

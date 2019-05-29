@@ -7,7 +7,7 @@ import { DxPopupComponent } from "devextreme-angular/ui/popup";
     styleUrls: ["change-search.component.less"]
 })
 export class ChangeSearchComponent {
-    @ViewChild(DxPopupComponent) search: DxPopupComponent;
+    @ViewChild(DxPopupComponent, {static: false}) search: DxPopupComponent;
     @Input() params: any;
     @Input() adaptOptions: any;
     changeSearchVisible = false;

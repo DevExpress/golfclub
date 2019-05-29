@@ -16,7 +16,7 @@ const MIN_START_TIME = 6,
 })
 
 export class BookComponent {
-    @ViewChild(DxFormComponent) form: DxFormComponent;
+    @ViewChild(DxFormComponent, {static: false}) form: DxFormComponent;
     @Input() data: any;
     @Input() bookVisible = false;
     @Input() adaptOptions: any;

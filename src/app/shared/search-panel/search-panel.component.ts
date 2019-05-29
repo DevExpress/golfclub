@@ -19,7 +19,7 @@ const MAX_NUMBER_OF_DAYS_FOR_BOOKING = 7,
 })
 
 export class SearchPanelComponent {
-    @ViewChild(DxFormComponent) form: DxFormComponent;
+    @ViewChild(DxFormComponent, {static: false}) form: DxFormComponent;
     @Output() onSearched = new EventEmitter<boolean>();
     @Input() data: any;
     @Input() adaptOptions: any;
