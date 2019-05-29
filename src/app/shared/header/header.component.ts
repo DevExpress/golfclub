@@ -14,7 +14,7 @@ const USER_NAME_KEY = "golfClubUser";
 })
 
 export class HeaderComponent {
-    @ViewChild(DxFormComponent) form: DxFormComponent;
+    @ViewChild(DxFormComponent, {static: false}) form: DxFormComponent;
     @Input() adaptOptions: any;
     logTemplate: string;
     loginTitle: string;

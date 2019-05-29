@@ -13,7 +13,7 @@ import { BookComponent } from "../../shared/book/book.component";
 })
 
 export class DescroptionComponent implements OnDestroy {
-    @ViewChild(BookComponent) book: BookComponent;
+    @ViewChild(BookComponent, {static: false}) book: BookComponent;
     @Input() adaptOptions: any;
     club: any[] = [];
     bookData: any;
