@@ -1,5 +1,5 @@
 ﻿import { Component, ViewChild, Input } from "@angular/core";
-import { DxPopupComponent } from "devextreme-angular/ui/popup";
+import { DxPopupComponent } from "devextreme-angular";
 
 @Component({
     selector: "change-search",
