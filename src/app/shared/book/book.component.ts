@@ -2,7 +2,7 @@
 import { DatePipe } from "@angular/common";
 import { CommonService } from "../../common.service";
 import { ClubsService } from "../../clubs.service";
-import { DxFormComponent } from "devextreme-angular/ui/form";
+import { DxFormComponent } from "devextreme-angular";
 
 const MIN_START_TIME = 6,
     MAX_END_TIME = 22,

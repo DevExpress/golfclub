@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, Output, Input, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { DatePipe } from "@angular/common";
-import { DxFormComponent } from "devextreme-angular/ui/form";
+import { DxFormComponent } from "devextreme-angular";
 import { CitiesService } from "../../cities.service";
 import { CommonService } from "../../common.service";
 import devexpress  from "devextreme/core/devices";
