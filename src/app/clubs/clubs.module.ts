@@ -1,9 +1,8 @@
 ﻿import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { DxButtonModule,
-         DxLoadPanelModule,
-         DxLoadIndicatorModule,
-         DxTemplateModule } from "devextreme-angular";
+import { DxButtonModule } from "devextreme-angular/ui/button";
+import { DxLoadPanelModule } from "devextreme-angular/ui/load-panel";
+import { DxLoadIndicatorModule } from "devextreme-angular/ui/load-indicator";
 
 import { SharedModule } from "../shared/shared.module";
 import { ClubsComponent } from "./clubs.component";
@@ -14,7 +13,6 @@ import { ClubsListComponent } from "./clubs-list/club-list.component";
     imports: [
         SharedModule,
         CommonModule,
-        DxTemplateModule,
         DxLoadIndicatorModule,
         DxLoadPanelModule,
         DxButtonModule

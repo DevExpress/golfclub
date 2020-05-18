@@ -1,7 +1,6 @@
 ﻿import { NgModule } from "@angular/core";
-import { DxButtonModule,
-         DxLoadPanelModule,
-         DxTemplateModule } from "devextreme-angular";
+import { DxButtonModule } from "devextreme-angular/ui/button";
+import { DxLoadPanelModule } from "devextreme-angular/ui/load-panel";
 import { CommonModule } from "@angular/common";
 
 import { SharedModule } from "../shared/shared.module";
@@ -14,7 +13,6 @@ import { ClubsComponent } from "./clubs-list/clubs-list.component";
     imports: [
         CommonModule,
         SharedModule,
-        DxTemplateModule,
         DxLoadPanelModule,
         DxButtonModule
     ],
