@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { BrowserModule, BrowserTransferStateModule } from "@angular/platform-browser";
-// import { DxServerTransferStateModule } from "devextreme-angular/core";
+import { DxServerTransferStateModule } from "devextreme-angular/core";
 import { AppComponent } from "./app.component";
 
 import { ClubsService } from "./clubs.service";
@@ -16,7 +16,7 @@ import { InfoModule } from "./info/info.module";
     providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, ClubsService],
     imports: [
         BrowserModule.withServerTransition({ appId: 'golfclub' }),
-        // DxServerTransferStateModule,
+        DxServerTransferStateModule,
         SharedModule,
         BrowserTransferStateModule,
         HomeModule,
