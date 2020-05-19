@@ -1,4 +1,4 @@
-import { NgModule, enableProdMode } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { BrowserModule, BrowserTransferStateModule } from "@angular/platform-browser";
 // import { DxServerTransferStateModule } from "devextreme-angular/core";
@@ -10,8 +10,6 @@ import { SharedModule } from "./shared/shared.module";
 import { HomeModule } from "./home/home.module";
 import { ClubsModule } from "./clubs/clubs.module";
 import { InfoModule } from "./info/info.module";
-
-enableProdMode();
 
 @NgModule({
     declarations: [AppComponent],
