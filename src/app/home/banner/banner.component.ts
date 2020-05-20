@@ -8,8 +8,8 @@ const COUNT_DAYS = 1;
 
 @Component({
     selector: "banner",
-    templateUrl: "banner.component.html",
-    styleUrls: ["banner.component.less"],
+    templateUrl: "./banner.component.html",
+    styleUrls: ["./banner.component.less"],
     providers: [
         OfferService,
         CommonService,
@@ -17,7 +17,7 @@ const COUNT_DAYS = 1;
     ]
 })
 export class BannerComponent {
-    offer: any[];
+    offer: any;
     @Output() dataLoaded = new EventEmitter<boolean>();
     name: string;
     constructor(private offerService: OfferService,

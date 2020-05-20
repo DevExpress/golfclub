@@ -1,43 +1,50 @@
 import 'zone.js/dist/zone-node';
-import 'reflect-metadata';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
-
-import { enableProdMode } from '@angular/core';
-
 import * as express from 'express';
 import { join } from 'path';
 
-enableProdMode();
+import { AppServerModule } from './src/main.server';
+import { APP_BASE_HREF } from '@angular/common';
+import { existsSync } from 'fs';
 
-const app = express();
+export function app() {
+  const server = express();
+  const distFolder = join(process.cwd(), 'dist/golfclub/browser');
+  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
-const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist');
+  server.engine('html', ngExpressEngine({
+    bootstrap: AppServerModule,
+  }));
 
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main');
+  server.set('view engine', 'html');
+  server.set('views', distFolder);
 
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ]
-}));
+  server.get('*.*', express.static(distFolder, {
+    maxAge: '1y'
+  }));
 
-app.set('view engine', 'html');
-app.set('views', join(DIST_FOLDER, 'browser'));
+  server.get('*', (req, res) => {
+    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  });
 
-app.get('/api/*', (req: any, res: any) => {
-  res.status(404).send('data requests are not supported');
-});
+  return server;
+}
 
-app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
+function run() {
+  const port = process.env.PORT || 4000;
 
-app.get('*', (req: any, res: any) => {
-  res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
-});
+  const server = app();
+  server.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
-});
+declare const __non_webpack_require__: NodeRequire;
+const mainModule = __non_webpack_require__.main;
+const moduleFilename = mainModule && mainModule.filename || '';
+if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
+  run();
+}
+
+export * from './src/main.server';

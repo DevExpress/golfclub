@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { DxPopupModule,
-         DxFormModule,
-         DxTemplateModule,
-         DxButtonModule,
-         DxSchedulerModule,
-         DxTextAreaModule } from "devextreme-angular";
+
+import { DxPopupModule } from "devextreme-angular/ui/popup";
+import { DxFormModule } from "devextreme-angular/ui/form";
+import { DxButtonModule } from "devextreme-angular/ui/button";
+import { DxSchedulerModule } from "devextreme-angular/ui/scheduler";
+import { DxTextAreaModule } from "devextreme-angular/ui/text-area";
 import { CommonModule } from "@angular/common";
 
 import { HeaderComponent } from "./header/header.component";
@@ -19,7 +19,6 @@ import { BookComponent } from "./book/book.component";
     imports: [
         CommonModule,
         DxPopupModule,
-        DxTemplateModule,
         DxButtonModule,
         DxSchedulerModule,
         DxFormModule,

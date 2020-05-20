@@ -1,7 +1,7 @@
-import { NgModule, enableProdMode } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { BrowserModule, BrowserTransferStateModule } from "@angular/platform-browser";
-import { DxTemplateModule, DxServerTransferStateModule } from "devextreme-angular";
+import { DxServerTransferStateModule } from "devextreme-angular/core";
 import { AppComponent } from "./app.component";
 
 import { ClubsService } from "./clubs.service";
@@ -11,14 +11,11 @@ import { HomeModule } from "./home/home.module";
 import { ClubsModule } from "./clubs/clubs.module";
 import { InfoModule } from "./info/info.module";
 
-enableProdMode();
-
 @NgModule({
     declarations: [AppComponent],
     providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, ClubsService],
     imports: [
         BrowserModule.withServerTransition({ appId: 'golfclub' }),
-        DxTemplateModule,
         DxServerTransferStateModule,
         SharedModule,
         BrowserTransferStateModule,

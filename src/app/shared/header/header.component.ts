@@ -2,7 +2,7 @@ import { Component, ViewChild, Input, PLATFORM_ID, Inject } from "@angular/core"
 import { Router } from "@angular/router";
 import { CommonService } from "../../common.service";
 import { DatePipe, isPlatformBrowser } from "@angular/common";
-import { DxFormComponent } from "devextreme-angular";
+import { DxFormComponent } from "devextreme-angular/ui/form";
 
 const USER_NAME_KEY = "golfClubUser";
 
