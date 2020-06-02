@@ -14,7 +14,7 @@
     [currentView]="adaptOptions.currentView">
     <div class="tooltip-template" *dxTemplate="let appointment of 'appointmentTooltip'">
         <div class="caption">Course Booked</div>
-        <span>{{appointment.startDate | date : 'shortTime'}} -</span>
-        <span>{{appointment.endDate | date : 'shortTime'}}</span>
+        <span>{{appointment.appointmentData.startDate | date : 'shortTime'}} -</span>
+        <span>{{appointment.appointmentData.endDate | date : 'shortTime'}}</span>
     </div>
 </dx-scheduler>
