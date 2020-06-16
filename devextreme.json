@@ -1,0 +1,43 @@
+{
+    "build": {
+        "commands": [
+            {
+                "command": "build-theme",
+                "options": {
+                    "themeId": "1",
+                    "items": [
+                        {
+                            "key": "@button-normal-color",
+                            "value": "#606060"
+                        },
+                        {
+                            "key": "@button-normal-border-color",
+                            "value": "rgba(0,0,0,.12)"
+                        },
+                        {
+                            "key": "@base-accent",
+                            "value": "#81bd00"
+                        },
+                        {
+                            "key": "@dropdowneditor-icon-color",
+                            "value": "rgba(129, 189, 0, 1)"
+                        },
+                        {
+                            "key": "@dropdowneditor-icon-active-color",
+                            "value": "rgba(129, 189, 0, 1)"
+                        },
+                        {
+                            "key": "@numberbox-spin-icon-color",
+                            "value": "rgba(129, 189, 0, 1)"
+                        },
+                        {
+                            "key": "@base-hover-bg",
+                            "value": "rgba(129, 189, 0, 0.15)"
+                        }
+                    ],
+                    "outputFile": "node_modules/devextreme/dist/css/tb.light.green.css"
+                }
+            }
+        ]
+    }
+}
