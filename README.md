@@ -12,10 +12,10 @@ The app was build using angular-cli. Run `npm install @angular/cli -g` to instal
 Run `npm install` to install the required node packages.
 
 ## Development server
-Run `npm start` or `ng serve` to start a dev server. Navigate to `http://localhost:4200/`. The app will be automatically reloaded if you change any of the source files.
+Run `npm start` to start a dev server. Navigate to `http://localhost:4200/`. The app will be automatically reloaded if you change any of the source files.
 
 ## Build
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Server Side Rendering
 Run `npm run build:ssr` to build the project. The build artifacts will be stored in the `dist/`directory. Run `npm run serve:ssr` to start the application. Navigate to `http://localhost:4000/`.
