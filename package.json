@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
+    "start": "npm run build-theme && ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
