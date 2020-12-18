@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "angular-cli": {},
   "scripts": {
-    "start": "npm run build-theme && ng serve",
-    "build": "npm run build-theme && ng build --prod",
+    "postinstall": "npm run build-theme",
+    "start": "ng serve",
+    "build": "ng build --prod",
     "lint": "tslint \"src/**/*.ts\"",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "build-theme": "devextreme build",
-    "dev:ssr": "npm run build-theme && ng run golfclub:serve-ssr",
-    "serve:ssr": "npm run build-theme && node dist/golfclub/server/main.js",
-    "build:ssr": "npm run build-theme && ng build --prod && ng run golfclub:server:production"
+    "dev:ssr": "ng run golfclub:serve-ssr",
+    "serve:ssr": "node dist/golfclub/server/main.js",
+    "build:ssr": "ng build --prod && ng run golfclub:server:production"
   },
   "dependencies": {
     "@angular/animations": "~9.1.7",
